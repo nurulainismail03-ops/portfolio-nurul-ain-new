@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Portfolio | Multimedia</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="moy-body-clean">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="logo">PORTFOLIO.©2026</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button id="theme-toggle" class="toggle-btn"><i class="fas fa-moon"></i></button>
+    </nav>
+
+    <!-- COLIN MOY HEADER TEXT WITH SWITCH -->
+    <header class="moy-main-header">
+        <h1 class="moy-huge-title">
+            PORTF<span class="moy-pill-switch"><span class="moy-switch-circle"></span></span>LIO
+        </h1>
+    </header>
+
+    <!-- HORIZONTAL OVAL SCROLLING GRID (6 KATEGORI PROJEK) -->
+    <main class="moy-horizontal-scroll-container">
+        
+        <!-- KAD 1: WEB AND APPS -->
+        <a href="#web-apps" class="moy-oval-card">
+            <div class="card-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80');"></div>
+            <div class="card-info-layer">
+                <h3>WEB &<br>APPS</h3>
+                <span class="sub-tag">01 // UI.UX DEVELOPMENT</span>
+            </div>
+        </a>
+
+        <!-- KAD 2: 3D MODELLING AND ANIMATION -->
+        <a href="#3d-modelling-animation" class="moy-oval-card">
+            <div class="card-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80');"></div>
+            <div class="card-info-layer">
+                <h3>3D MODELLING<br>& ANIMATION</h3>
+                <span class="sub-tag">02 // MODELING.ANIMATION</span>
+            </div>
+        </a>
+
+        <!-- KAD 3: AR AND VR -->
+        <a href="#ar-vr" class="moy-oval-card">
+            <div class="card-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=600&q=80');"></div>
+            <div class="card-info-layer">
+                <h3>AR &<br>VR</h3>
+                <span class="sub-tag">03 // IMMERSIVE MEDIA</span>
+            </div>
+        </a>
+
+        <!-- KAD 4: GRAPHIC DESIGN -->
+        <a href="#graphic-design" class="moy-oval-card">
+            <div class="card-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80');"></div>
+            <div class="card-info-layer">
+                <h3>GRAPHIC<br>DESIGN</h3>
+                <span class="sub-tag">04 // BRANDING.VISUAL</span>
+            </div>
+        </a>
+
+        <!-- KAD 5: GAMES DEVELOPMENT -->
+        <a href="#games-dev" class="moy-oval-card">
+            <div class="card-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=600&q=80');"></div>
+            <div class="card-info-layer">
+                <h3>GAMES<br>DEVELOPMENT</h3>
+                <span class="sub-tag">05 // INTERACTIVE ENGINE</span>
+            </div>
+        </a>
+
+        <!-- KAD 6: PHOTOGRAPHY & VIDEOGRAPHY -->
+        <a href="#photo-video" class="moy-oval-card">
+            <div class="card-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80');"></div>
+            <div class="card-info-layer">
+                <h3>PHOTO &<br>VIDEO</h3>
+                <span class="sub-tag">06 // LENS.PRODUCTION</span>
+            </div>
+        </a>
+
+    </main>
+
+    <!-- SECTION KANDUNGAN BAWAH (IKUT TEMA KONSEPTUAL ASAL + SUSUNAN IMAGE_5A9A1F.JPG) -->
+    <section class="container project-detail-section">
+        
+        <!-- DETAIL 1: WEB AND APPS -->
+        <div id="web-apps" class="moy-showcase-wrapper">
+            <div class="moy-showcase-header">
+                <span class="detail-num">01 // WEB AND APPS</span>
+                <h2 class="moy-showcase-title">User Interface & Web Application</h2>
+                <p class="detail-desc">A collection of responsive web designs and mobile application interfaces. Focused on user experience (UX) research, clean front-end code implementation, and interactive layout scalability.</p>
+                <div class="moy-showcase-line"></div>
+            </div>
+
+            <!-- SUSUNAN KEDUDUKAN GAMBAR PROJEK UTAMA (MASUKKAN GAMBAR SENDIRI DI SINI) -->
+            <div class="moy-cloud-container">
+                <!-- Baris Atas (3 Gambar Terapung) -->
+                <div class="moy-cloud-row">
+                    <div class="moy-mini-card"><img src="images/catcare-packages.png" alt="Packages Page"></div>
+                    <div class="moy-mini-card"><img src="images/catcare-solutions.png" alt="Solutions Page"></div>
+                    <div class="moy-mini-card"><img src="images/catcare-admin.png" alt="Admin Welcome"></div>
+                </div>
+
+                <!-- Baris Tengah (Sisi Kiri, Laptop Utama di Tengah, Sisi Kanan) -->
+                <div class="moy-cloud-row">
+                    <div class="moy-mini-card moy-tilt-left"><img src="images/catcare-login.png" alt="Login Portal"></div>
+                    
+                    <!-- LAPTOP FRAME MINIMALIS (SKRIN PROJEK UTAMA) -->
+                    <div class="moy-laptop-frame">
+                        <div class="moy-laptop-screen">
+                            <img src="images/catcare-home.png" alt="CatCare Hub Main Site">
+                        </div>
+                        <div class="moy-laptop-base"></div>
+                    </div>
+
+                    <div class="moy-mini-card moy-tilt-right"><img src="images/catcare-profile.png" alt="Profile Update"></div>
+                </div>
+
+                <!-- Baris Bawah (2 Gambar) -->
+                <div class="moy-cloud-row">
+                    <div class="moy-mini-card"><img src="images/catcare-home.png" alt="Mobile View"></div>
+                    <div class="moy-mini-card"><img src="images/catcare-explainer.png" alt="Admin Panel Explainer"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DETAIL 2: 3D MODELLING AND ANIMATION -->
+<div id="3d-modelling-animation" class="moy-showcase-wrapper">
+    <div class="moy-showcase-header">
+        <span class="detail-num">02 // 3D MODELLING AND ANIMATION</span>
+        <h2 class="moy-showcase-title">3D Woodworking Workshop & Asset Modeling</h2>
+        <p class="detail-desc">A detailed interior environment of a traditional woodworking workshop. Features custom-modeled hand tools, optimized polygon structures, realistic wood texturing, and atmospheric interior lighting setups.</p>
+        <div class="moy-showcase-line"></div>
+    </div>
+    
+    <div class="moy-cloud-container">
+        <!-- 1. PAPARAN UTAMA (6 GAMBAR ENVIRONMENT BENZEL) -->
+        <h3 class="section-sub-title"><i class="fas fa-cubes"></i> Workshop Environment Scenery</h3>
+        <div class="workshop-scenery-grid">
+            <div class="scenery-card"><img src="images/workshop-1.png" alt="Workshop Corner View"></div>
+            <div class="scenery-card"><img src="images/workshop-2.png" alt="Workbench Focus"></div>
+            <div class="scenery-card"><img src="images/workshop-3.png" alt="Wide Interior View"></div>
+            <div class="scenery-card"><img src="images/workshop-4.png" alt="Shelving & Lighting Detail"></div>
+            <div class="scenery-card"><img src="images/workshop-5.png" alt="Tool Rack Display"></div>
+            <div class="scenery-card"><img src="images/workshop-6.png" alt="Stool Close-up"></div>
+        </div>
+
+        <!-- 2. PAPARAN ALATAN (6 GAMBAR PROPS/TOOLS DI BAWAH) -->
+        <h3 class="section-sub-title"><i class="fas fa-tools"></i> Modeled Props & Hand Tools</h3>
+        <div class="tools-showcase-row">
+            <div class="tool-vertical-card"><img src="images/tool-1.png" alt="Chisel Tool"></div>
+            <div class="tool-vertical-card"><img src="images/tool-2.png" alt="Axe Tool"></div>
+            <div class="tool-vertical-card"><img src="images/tool-3.png" alt="Claw Hammer"></div>
+            <div class="tool-vertical-card"><img src="images/tool-4.png" alt="Mallet Hammer"></div>
+            <div class="tool-vertical-card"><img src="images/tool-5.png" alt="Hand Saw"></div>
+            <div class="tool-vertical-card"><img src="images/tool-6.png" alt="Tenon Saw"></div>
+        </div>
+    </div>
+</div>
+
+        <!-- DETAIL 3: AR AND VR -->
+        <div id="ar-vr" class="moy-showcase-wrapper">
+            <div class="moy-showcase-header">
+                <span class="detail-num">03 // AR AND VR</span>
+                <h2 class="moy-showcase-title">Augmented Reality & Virtual Reality Experiences</h2>
+                <p class="detail-desc">Immersive media applications designed to bridge the physical and digital worlds. Features interactive target-tracking AR filters, virtual environment simulations, and spatial UI experiments.</p>
+                <div class="moy-showcase-line"></div>
+            </div>
+            <div class="moy-cloud-container">
+                <div class="moy-cloud-row">
+                    <div class="moy-laptop-frame">
+                        <div class="moy-laptop-screen">
+                            <img src="images/arvr-project.png" alt="ARVR Showcase">
+                        </div>
+                        <div class="moy-laptop-base"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DETAIL 4: GRAPHIC DESIGN -->
+        <div id="graphic-design" class="moy-showcase-wrapper">
+            <div class="moy-showcase-header">
+                <span class="detail-num">04 // GRAPHIC DESIGN</span>
+                <h2 class="moy-showcase-title">Visual Identity, Posters & Corporate Branding</h2>
+                <p class="detail-desc">Explorations in layout hierarchy, color psychology, and corporate branding identity systems. Contains poster designs, vector logotypes, and commercial publication assets layout.</p>
+                <div class="moy-showcase-line"></div>
+            </div>
+            <div class="moy-cloud-container">
+                <div class="moy-cloud-row">
+                    <div class="moy-laptop-frame">
+                        <div class="moy-laptop-screen">
+                            <img src="images/graphic-project.png" alt="Graphic Showcase">
+                        </div>
+                        <div class="moy-laptop-base"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DETAIL 5: GAMES DEVELOPMENT -->
+        <div id="games-dev" class="moy-showcase-wrapper">
+            <div class="moy-showcase-header">
+                <span class="detail-num">05 // GAMES DEVELOPMENT</span>
+                <h2 class="moy-showcase-title">Interactive Game Mechanics & Level Design</h2>
+                <p class="detail-desc">Projects involving game logic scripts, user control mechanics, sprite sheets implementation, and level architecture blueprints designed for cross-platform entertainment systems.</p>
+                <div class="moy-showcase-line"></div>
+            </div>
+            <div class="moy-cloud-container">
+                <div class="moy-cloud-row">
+                    <div class="moy-laptop-frame">
+                        <div class="moy-laptop-screen">
+                            <img src="images/games-project.png" alt="Games Showcase">
+                        </div>
+                        <div class="moy-laptop-base"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DETAIL 6: PHOTOGRAPHY & VIDEOGRAPHY -->
+        <div id="photo-video" class="moy-showcase-wrapper">
+            <div class="moy-showcase-header">
+                <span class="detail-num">06 // PHOTOGRAPHY & VIDEOGRAPHY</span>
+                <h2 class="moy-showcase-title">Digital Photography & Video Production Portfolio</h2>
+                <p class="detail-desc">A showcase of cinematic compositions, short films, lighting studies, and audio-visual post-production editing. Focuses on storytelling techniques through framing and rhythmic editing sequences.</p>
+                <div class="moy-showcase-line"></div>
+            </div>
+            <div class="moy-cloud-container">
+                <div class="moy-cloud-row">
+                    <div class="moy-laptop-frame">
+                        <div class="moy-laptop-screen">
+                            <img src="images/photo-project.png" alt="Photo Video Showcase">
+                        </div>
+                        <div class="moy-laptop-base"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Mzn.Studio. All Rights Reserved.</p>
+        <p>FIK UNISZA // CSD34203_PROJECT</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
