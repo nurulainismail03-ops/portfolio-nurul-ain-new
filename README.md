@@ -1,40 +1,38 @@
-# portfolio-nurul-ain-new
-# 🍫 Nurul Ain Personal Portfolio & Blog
+# 🍫 Project Portfolio: Personal Blog Page
 
-### 🔗 [Live Demo Link](MASUKKAN_LINK_GITHUB_PAGES_AWAK_KAT_SINI)
+### 🔗 Live Demo Website: [https://nurulainismail03-ops.github.io/portfolio-nurul-ain-new/]
+---
+
+## 1. Description
+This personal blog and project portfolio website is developed as a requirement for the course **CSD 34203: Special Topics in Software Development** at **Universiti Sultan Zainal Abidin (UniSZA)**. 
+
+The primary purpose of this project is to build an interactive digital platform that successfully bridges creative multimedia design with structured frontend logic, while demonstrating an independent entrepreneurial mindset and adaptive problem-solving skills throughout the development process.
 
 ---
 
-## 📝 Project Description
-This repository contains my personal project portfolio and dynamic blog built for the course **CSD 34203: Special Topics in Software Development** at **Universiti Sultan Zainal Abidin (UniSZA)**. The project showcases an integrated bridge between creative multimedia design and structured frontend software implementation, delivering an immersive user experience.
+## 2. Proper README.md File
 
----
+### 🏷️ Project Name & Short Description
+* **Project Name:** Nurul Ain Personal Portfolio & Tech Blog
+* **Description:** A premium, chocolate-themed visual portfolio designed to showcase academic achievements, personal software skills, and professional interactive components using modern frontend technologies.
 
-## ✨ Key Features
-* **Minimalist Chocolate Aesthetic:** Designed with a premium dark-chocolate and cream color system tailored for modern visual appeal.
-* **Interactive Routine Tabs:** A seamless JavaScript-driven routine switcher allowing users to explore my design and development passion iteratively.
-* **Infinite Marquee Track:** A continuous loops showcase detailing my technical proficiency across multimedia software (Figma, Blender, Unity, etc.).
-* **Bento Grid Skill Layout:** An elevated asymmetric layout inspired by modern interface designs to categorize my core personal strengths.
-* **Academic Journey Timeline:** A structured side-by-side historical view of my educational path from SPM to my current Degree phase.
-* **Fluid Responsiveness:** Fully optimized grid and flexbox logic for a bug-free experience on mobile devices and desktop displays.
+### ✨ List of Features
+* **Interactive Routine Tabs:** A seamless JavaScript-driven component that allows users to toggle and explore my creative design routines interactively.
+* **Infinite Marquee Track:** A continuous scrolling text showcase highlighting my core technical software proficiencies.
+* **Asymmetric Bento Grid Layout:** A modern, clean card interface structure used to present personal skills dynamically.
+* **Academic Timeline:** A structured, side-by-side historical presentation detailing my academic journey.
+* **Fluid Mobile Responsiveness:** Fully optimized layouts using CSS Grid and Flexbox to ensure perfect display rendering across mobile and desktop viewports.
 
----
+### 🛠️ Technologies Used
+* **HTML5:** Structuring clean semantic web elements.
+* **CSS3:** Handling custom properties, grid layouts, fluid typography, and responsive media queries.
+* **JavaScript (ES6):** Powering user interactions, dynamic class switching, and the tab selection logic.
+* **Icons & Fonts:** Font Awesome icons integration and modern Google Web Fonts (Syne & Plus Jakarta Sans).
 
-## 🛠️ Technologies Used
-* **Frontend Logic & Structures:** HTML5 & Semantic Web Elements
-* **Styling Architecture:** CSS3 (Custom Properties, Flexbox, CSS Grid)
-* **Interactions:** Vanilla JavaScript (ES6+)
-* **Icons & Typography:** Font Awesome 6.4.0, Google Fonts (Syne & Plus Jakarta Sans)
-
----
-
-## 📁 Repository Structure
-```text
-├── index.html       # Home page (The landing interface)
-├── about.html       # About page (Earthy brown theme & interactive routine tabs)
-├── blog.html        # Blog page (Contains 2-3 sample tech articles)
-├── contact.html     # Contact page (Communication channels)
-├── style.css        # Core stylesheet for layout architecture
-├── script.js        # Global interactive scripts and dark-mode controls
-└── ain.png          # Portfolio identity asset
+### 🚀 How to Run the Project
+1. **Clone the Repository:**
+```bash
+git clone https://github.com/nurulainismail03-ops/portfolio-nurul-ain-new.git
+2. **Navigate to Folder**
+   [cite_start]Go into the downloaded project directory.
 
