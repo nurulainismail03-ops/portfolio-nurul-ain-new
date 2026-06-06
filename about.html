@@ -3,9 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | Multimedia Portfolio</title>
+    <title>About Me | Premium Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Panggilan Font Awesome & Google Fonts (Plus Jakarta Sans & Syne) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           🎨 GLOBAL ACCENT UPDATE (TUKAR BIRU -> ESTETIK COKLAT GELAP)
+           ========================================================================== */
+        :root {
+            --accent-color: #4a3728; /* Coklat Gelap Estetik */
+            --accent-light: rgba(74, 55, 40, 0.07); /* Tint Coklat Lembut */
+            --text-muted: #71665d;
+        }
+
+        /* Elemen Meta Masa & Tarikh Gaya Blog */
+        .blog-meta-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 12.5px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        .blog-meta-wrapper span i {
+            margin-right: 5px;
+            color: var(--accent-color);
+        }
+
+        .sub-tag {
+            font-size: 11px !important;
+            font-weight: 700;
+            color: var(--accent-color) !important;
+            background: var(--accent-light);
+            padding: 4px 12px !important;
+            border-radius: 100px !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hollow-text {
+            color: var(--accent-color) !important;
+        }
+
+        /* CSS Bahagian Routine Tabs (Vibes Kad Blog Premium) */
+        .routine-tabs-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(74, 55, 40, 0.03);
+            gap: 15px;
+            border: 1px solid rgba(74, 55, 40, 0.02);
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) { 
+            .routine-tabs-container { grid-template-columns: 1fr; } 
+        }
+
+        .tab-menu { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 6px; 
+        }
+        @media (max-width: 768px) { 
+            .tab-menu { flex-direction: row; flex-wrap: wrap; } 
+        }
+        
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 15px 20px;
+            text-align: left;
+            font-size: 13.5px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #5c524a;
+            transition: all 0.2s ease;
+        }
+        .tab-btn:hover { 
+            background: rgba(74, 55, 40, 0.03); 
+        }
+        .tab-btn.active-tab {
+            background: var(--accent-color) !important; 
+            color: #ffffff;
+        }
+
+        .tab-contents { 
+            padding: 20px 25px; 
+        }
+        .tab-content-pane { 
+            display: none; 
+        }
+        .tab-content-pane.active-pane { 
+            display: block; 
+        }
+        .tab-content-pane h3 { 
+            font-size: 18px; 
+            font-weight: 700; 
+            margin: 0 0 10px 0; 
+            color: #261c14; 
+        }
+        .tab-content-pane p { 
+            font-size: 14px; 
+            color: #5c524a; 
+            line-height: 1.65; 
+            margin: 0; 
+        }
+
+        /* Kemas kini warna elemen sedia ada supaya selari */
+        .edu-date {
+            color: var(--accent-color) !important;
+        }
+        .edu-grade {
+            background: var(--accent-light) !important;
+            color: var(--accent-color) !important;
+        }
+        .bento-icon {
+            color: var(--accent-color) !important;
+        }
+
+        /* ==========================================================================
+           🌓 DARK MODE COMPATIBILITY (TEMA COKLAT UNTUK DARK MODE)
+           ========================================================================== */
+        body.dark-theme {
+            --accent-color: #d7c4b7; /* Warna coklat krim lembut untuk mod gelap */
+            --accent-light: rgba(215, 196, 183, 0.15);
+            --text-muted: #a3968e;
+        }
+        body.dark-theme .routine-tabs-container {
+            background: #181614 !important; /* Latar belakang coklat sangat gelap */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3) !important;
+            border-color: rgba(255,255,255,0.02) !important;
+        }
+        body.dark-theme .tab-btn { color: #a3968e; }
+        body.dark-theme .tab-btn:hover { background: rgba(255,255,255,0.03); }
+        body.dark-theme .tab-btn.active-tab { background: var(--accent-color) !important; color: #181614; font-weight: 700; }
+        body.dark-theme .tab-content-pane h3 { color: #ffffff; }
+        body.dark-theme .tab-content-pane p { color: #ced4da; }
+    </style>
 </head>
 <body>
 
@@ -20,38 +164,184 @@
         <button id="theme-toggle" class="toggle-btn"><i class="fas fa-moon"></i></button>
     </nav>
 
-    <main class="container" style="margin-top: 60px;">
-        <div class="about-grid">
-            
-            <div class="graphic-box">
-                <i class="fa-solid fa-palette"></i>
+    <!-- KESAN GLOW LATAR BELAKANG (UPGRADED) -->
+    <div class="ambient-glow"></div>
+
+    <main class="container" style="margin-top: 80px;">
+        
+        <!-- ==========================================
+             📸 SECTION 1: BIODATA & PORTRAIT (WITH BLOG META TIME)
+             ========================================== -->
+        <section class="hero-clean-grid">
+            <div class="hero-image-side">
+                <img src="ain.png" alt="Nurul Ain" class="floating-portrait">
             </div>
             
-            <div class="about-text">
-                <h2>Creative & Technical Mindset</h2>
-                <p>I am currently pursuing my bachelor's degree in Multimedia at UniSZA. Under the course CSD 34203 (Special Topics in Software Development), I bridge the gap between creative visual artistry and front-end logical structures to build engaging digital solutions.</p>
+            <div class="hero-text-side">
+                <!-- ELEMEN MASA SEPERTI DI BLOG -->
+                <div class="blog-meta-wrapper">
+                    <span class="sub-tag">// BIO PROFILE</span>
+                    <span><i class="far fa-calendar-alt"></i> Updated: June 2026</span>
+                    <span><i class="far fa-clock"></i> 2 min read</span>
+                </div>
+
+                <h1 class="main-title">Hi! I'm <span class="hollow-text">Nurul Ain</span></h1>
+                <p class="bio-desc">I am currently pursuing my bachelor's degree in Multimedia at UniSZA. Under the course CSD 34203 (Special Topics in Software Development), I bridge the gap between creative visual artistry and front-end logical structures to build engaging digital solutions.</p>
                 
-                <div class="profile-details">
-                    <div class="detail-row">
-                        <span>NAME</span>
-                        <span>NURUL AIN BINTI MD ISMAIL</span>
+                <div class="info-list-brutalist">
+                    <div class="info-item"><span>NAME</span> <strong>NURUL AIN BINTI MD ISMAIL</strong></div>
+                    <div class="info-item"><span>INSTITUTION</span> <strong>UNIVERSITI SULTAN ZAINAL ABIDIN (UniSZA)</strong></div>
+                    <div class="info-item"><span>CREATIVE FOCUS</span> <strong>UI/UX DESIGN & INTERACTIVE WEB</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             🏃‍♂️ SECTION 2: INFINITE MARQUEE (SOFTWARE SKILLS)
+             ========================================== -->
+        <section class="marquee-skills-container">
+            <div class="marquee-track">
+                <div class="marquee-content">
+                    <span><i class="fa-brands fa-figma"></i> FIGMA</span>
+                    <span><i class="fa-solid fa-bezier-curve"></i> ILLUSTRATOR</span>
+                    <span><i class="fa-solid fa-wand-magic-sparkles"></i> PHOTOSHOP</span>
+                    <span><i class="fa-solid fa-cube"></i> BLENDER</span>
+                    <span><i class="fa-brands fa-unity"></i> UNITY</span>
+                    <span><i class="fa-solid fa-vector-square"></i> MAYA</span>
+                    <span><i class="fa-solid fa-video"></i> CAPCUT</span>
+                </div>
+                <!-- Duplicate untuk seamless loop -->
+                <div class="marquee-content" aria-hidden="true">
+                    <span><i class="fa-brands fa-figma"></i> FIGMA</span>
+                    <span><i class="fa-solid fa-bezier-curve"></i> ILLUSTRATOR</span>
+                    <span><i class="fa-solid fa-wand-magic-sparkles"></i> PHOTOSHOP</span>
+                    <span><i class="fa-solid fa-cube"></i> BLENDER</span>
+                    <span><i class="fa-brands fa-unity"></i> UNITY</span>
+                    <span><i class="fa-solid fa-vector-square"></i> MAYA</span>
+                    <span><i class="fa-solid fa-video"></i> CAPCUT</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             🧩 SECTION 3: BENTO GRID (PERSONAL SKILLS)
+             ========================================== -->
+        <section class="section-wrapper">
+            <div class="block-title">
+                <h2>PERSONAL SKILLS</h2>
+                <div class="title-line"></div>
+            </div>
+            
+            <div class="bento-skills-layout">
+                <div class="bento-card card-w2">
+                    <i class="fa-solid fa-lightbulb bento-icon"></i>
+                    <h3>Creativity & Innovation</h3>
+                    <p>Able to generate fresh ideas and create visually engaging multimedia content.</p>
+                </div>
+                <div class="bento-card">
+                    <i class="fa-solid fa-eye bento-icon"></i>
+                    <h3>Attention to Detail</h3>
+                    <p>Ensure designs, animations, and layouts are precise and professional.</p>
+                </div>
+                <div class="bento-card">
+                    <i class="fa-solid fa-hourglass-half bento-icon"></i>
+                    <h3>Time Management</h3>
+                    <p>Deliver projects efficiently within strict deadlines.</p>
+                </div>
+                <div class="bento-card card-h2 flex-bento-special">
+                    <i class="fa-solid fa-users bento-icon"></i>
+                    <div>
+                        <h3>Teamwork & Collaboration</h3>
+                        <p>Work effectively with teammates or clients to achieve the best results globally.</p>
                     </div>
-                    <div class="detail-row">
-                        <span>INSTITUTION</span>
-                        <span>UNIVERSITI SULTAN ZAINAL ABIDIN (UniSZA)</span>
+                </div>
+                <div class="bento-card">
+                    <i class="fa-solid fa-puzzle-piece bento-icon"></i>
+                    <h3>Problem Solving</h3>
+                    <p>Find creative solutions when facing challenges in complex projects.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             🎓 SECTION 4: EDUCATION SIDE-BY-SIDE
+             ========================================== -->
+        <section class="section-wrapper education-split">
+            <div class="edu-left-heading">
+                <h2>ACADEMIC<br>JOURNEY</h2>
+            </div>
+            
+            <div class="edu-right-timeline">
+                <!-- Item 1 (Degree) -->
+                <div class="edu-row-card featured-edu">
+                    <div class="edu-badge-zone">
+                        <span class="edu-date">2024 — 2026</span>
+                        <span class="edu-grade">CGPA 3.65</span>
                     </div>
-                    <div class="detail-row">
-                        <span>CREATIVE TOOLS</span>
-                        <span>FIGMA // ADOBE SUITE // BLENDER</span>
+                    <div class="edu-text-zone">
+                        <h3>Bachelor of Information Technology (Media Informatics) with Honours</h3>
+                        <p>Universiti Sultan Zainal Abidin (UniSZA)</p>
                     </div>
-                    <div class="detail-row">
-                        <span>CORE FOCUS</span>
-                        <span>UI/UX DESIGN & INTERACTIVE WEB</span>
+                </div>
+
+                <!-- Item 2 (STPM) -->
+                <div class="edu-row-card">
+                    <div class="edu-badge-zone">
+                        <span class="edu-date">2022 — 2023</span>
+                        <span class="edu-grade">CGPA 3.34</span>
+                    </div>
+                    <div class="edu-text-zone">
+                        <h3>Sijil Tinggi Persekolahan Malaysia (STPM)</h3>
+                        <p>Sekolah Menengah Kebangsaan Sungai Choh</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 (SPM) -->
+                <div class="edu-row-card">
+                    <div class="edu-badge-zone">
+                        <span class="edu-date">2017 — 2021</span>
+                        <span class="edu-grade">5A</span>
+                    </div>
+                    <div class="edu-text-zone">
+                        <h3>Sijil Pelajaran Malaysia (SPM)</h3>
+                        <p>Sekolah Menengah Kebangsaan Sungai Choh</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-        </div>
+        <!-- ==========================================
+             🆕 SECTION 5: INTERACTIVE CREATIVE ROUTINE
+             ========================================== -->
+        <section class="section-wrapper">
+            <div class="block-title">
+                <h2>CREATIVE ROUTINE & PASSION</h2>
+                <div class="title-line"></div>
+            </div>
+            
+            <div class="routine-tabs-container">
+                <div class="tab-menu">
+                    <button class="tab-btn active-tab" onclick="openTab(evt, 'uiux')"><i class="fas fa-palette"></i> UI/UX Design</button>
+                    <button class="tab-btn" onclick="openTab(evt, 'rendering')"><i class="fas fa-cube"></i> 3D Workshop</button>
+                    <button class="tab-btn" onclick="openTab(evt, 'learning')"><i class="fas fa-code"></i> Development</button>
+                </div>
+                <div class="tab-contents">
+                    <div id="uiux" class="tab-content-pane active-pane">
+                        <h3>Pixel Perfect Iterations</h3>
+                        <p>Every design starts with intense layout research. I enjoy breaking down design systems in Figma, adjusting micro-interactions, and building seamless typography scales to make digital platforms clean and user-friendly.</p>
+                    </div>
+                    <div id="rendering" class="tab-content-pane">
+                        <h3>3D Environmental Crafting</h3>
+                        <p>When working inside Blender, I love configuring non-destructive hard-surface items. Setting up global lighting coordinates and testing atmospheric noise nodes allows me to breathe realism into empty polygon structures.</p>
+                    </div>
+                    <div id="learning" class="tab-content-pane">
+                        <h3>Logical System Synthesis</h3>
+                        <p>Translating absolute graphic parameters into highly structured frontend code. Writing declarative layout grids and clean semantic components ensures that artistic vision scales perfectly across active user screen constraints.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer>
@@ -59,6 +349,25 @@
         <p>FIK UNISZA // CSD34203_PROJECT</p>
     </footer>
 
+    <!-- LOGIK JAVASCRIPT UNTUK TABS -->
+    <script>
+        function openTab(evt, tabId) {
+            const panes = document.querySelectorAll('.tab-content-pane');
+            panes.forEach(pane => pane.classList.remove('active-pane'));
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active-tab'));
+
+            document.getElementById(tabId).classList.add('active-pane');
+            
+            if (evt && evt.currentTarget) {
+                evt.currentTarget.classList.add('active-tab');
+            } else if (window.event && window.event.srcElement) {
+                window.event.srcElement.classList.add('active-tab');
+            }
+        }
+        window.evt = window.event;
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

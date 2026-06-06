@@ -1335,3 +1335,2424 @@ footer {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+/* Container Utama Grid Poster */
+.photo-poster-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    width: 100%;
+    margin-top: 60px; /* Jarak atas lebih sikit sbb ada kad yang meluncur naik */
+    align-items: start;
+}
+
+/* Komponen Kad Poster */
+.poster-card {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* TRIK STRUKTUR BERTINGKAT (Ikut Rujukan image_c1e904.jpg) */
+.card-pos-1 { transform: translateY(20px); }  /* Normal turun sikit */
+.card-pos-2 { transform: translateY(70px); }  /* Rendah bawah */
+.card-pos-3 { transform: translateY(0px); }   /* Paling tinggi ke atas */
+.card-pos-4 { transform: translateY(50px); }  /* Sederhana rendah */
+
+/* Pembungkus Gambar (Untuk kesan rounded corner macam kad) */
+.poster-img-wrapper {
+    width: 100%;
+    aspect-ratio: 2 / 3; /* Nisbah potret poster filem yang sangat kemas */
+    border-radius: 24px;  /* Lengkungan bucu yang cantik seperti dalam gambar */
+    overflow: hidden;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Mengawal Gambar Asal */
+.poster-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* TRIK HITAM PUTIH UTAMA */
+    filter: grayscale(100%) brightness(85%); 
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+/* Ruang Teks Maklumat di Bawah Kad */
+.poster-info {
+    margin-top: 15px;
+    padding: 0 5px;
+}
+
+.poster-info h3 {
+    font-size: 0.9rem;
+    color: #fff;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.poster-info .poster-tag {
+    font-size: 0.7rem;
+    color: #888;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Container Flexbox Utama - Menyusun gambar secara mengalir (flow) */
+.clean-art-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Jarak antara kad yang selesa */
+    width: 100%;
+    margin-top: 40px;
+    justify-content: center; /* Gambar auto-center, takkan lari skrin */
+    align-items: flex-end; /* Gambar tapak dia sama rata dari bawah, nampak kemas! */
+}
+
+/* Base Style Kad */
+.art-card {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease;
+}
+
+/* ==========================================================================
+   KAWALAN SAIZ ASLI GAMBAR AIN (100% TEGAP & TIADA CROP)
+   ========================================================================== */
+.pic-1 { width: 291.3px; height: 412.1px; }
+.pic-2 { width: 294.4px; height: 416.1px; }
+.pic-3 { width: 208px;   height: 416.1px; }
+.pic-4 { width: 386.5px; height: 289.9px; }
+.pic-5 { width: 289.9px; height: 289.9px; }
+.pic-6 { width: 311.7px; height: 311.7px; }
+.pic-7 { width: 498.7px; height: 311.7px; }
+.pic-8 { width: 220.4px; height: 311.7px; }
+
+/* ==========================================================================
+   KREATIVITI ASIMETRIK (TRIK KEMAS BUDAK GRAPHIC DESIGN)
+   ========================================================================== */
+/* Kita anjakan (tilt/shift) beberapa kad ke atas sikit secara rawak 
+   supaya susunan baris tak nampak bosan macam kedai baju, tapi still tersusun lurus */
+.pic-2, .pic-5, .pic-7 {
+    transform: translateY(-15px); 
+}
+
+/* ==========================================================================
+   BINGKAI GAMBAR & HOVER (WARNA PENUH + CYAN GLOW)
+   ========================================================================== */
+.art-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.art-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* Mengekalkan bentuk asal */
+    display: block;
+    filter: brightness(95%);
+    transition: transform 0.5s ease;
+}
+
+.art-meta {
+    padding-top: 10px;
+}
+
+.art-meta h3 {
+    font-size: 0.8rem;
+    color: #888;
+    font-family: monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+/* EFEK BILA TETIKUS LALU (HOVER) */
+.art-card:hover .art-frame {
+    border-color: #00ffff;
+    box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2);
+    transform: scale(1.02); /* Zoom kad secara keseluruhan */
+}
+
+.art-card:hover .art-meta h3 {
+    color: #00ffff;
+}
+
+/* RESPONSIVE LAYOUT (UNTUK HANDPHONE) */
+@media (max-width: 768px) {
+    .clean-art-gallery {
+        gap: 20px;
+    }
+    .art-card {
+        width: 100% !important;
+        max-width: 300px;
+        height: auto !important;
+        transform: none !important; /* Tutup anjakan dekat phone supaya tak pelik */
+    }
+}
+
+/* Container Utama Seksyen Game */
+/* Container Utama Seksyen Game */
+.game-showcase-wrapper {
+    background: transparent; 
+    padding: 50px 0px;
+    color: #1a1a1a; /* Tukar teks utama kepada warna gelap */
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+
+.game-showcase-header {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.game-detail-num {
+    color: #2d3748; /* Warna kelabu gelap/charcoal yang tajam */
+    font-family: monospace;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.game-showcase-title {
+    font-size: 2.5rem;          /* Besarkan balik saiz tulisan */
+    font-weight: 900;           /* Set paling tebal (Black/Extra Bold) */
+    text-transform: uppercase;  /* Semua huruf besar */
+    letter-spacing: 1px;        /* Jarak rapat yang kemas */
+    color: #111111;             /* Warna hitam pekat dan tajam */
+    margin-top: 5px;
+}
+
+/* ==========================================================================
+   SUSUNAN MOCKUP SIMETRI
+   ========================================================================== */
+.game-display-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; 
+    width: 100%;
+    position: relative;
+    margin-top: 30px;
+    min-height: 420px;
+    background: none; 
+}
+
+/* Kawalan Maskot Tepi */
+.game-mascot {
+    z-index: 5;
+}
+
+.mascot-boy {
+    width: 125px;
+    align-self: flex-end; 
+}
+
+.mascot-crab {
+    width: 115px;
+    align-self: flex-end;
+}
+
+.game-mascot img {
+    width: 100%;
+    height: auto;
+}
+
+/* Deretan Telefon */
+.game-phones-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Bingkai Telefon */
+.game-phone {
+    background: #000;
+    border: 1px solid rgba(0, 0, 0, 0.15); /* Border telefon bertukar gelap halus */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+    overflow: hidden;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+/* Container Utama Grid Poster */
+.photo-poster-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    width: 100%;
+    margin-top: 60px; /* Jarak atas lebih sikit sbb ada kad yang meluncur naik */
+    align-items: start;
+}
+
+/* Komponen Kad Poster */
+.poster-card {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* TRIK STRUKTUR BERTINGKAT (Ikut Rujukan image_c1e904.jpg) */
+.card-pos-1 { transform: translateY(20px); }  /* Normal turun sikit */
+.card-pos-2 { transform: translateY(70px); }  /* Rendah bawah */
+.card-pos-3 { transform: translateY(0px); }   /* Paling tinggi ke atas */
+.card-pos-4 { transform: translateY(50px); }  /* Sederhana rendah */
+
+/* Pembungkus Gambar (Untuk kesan rounded corner macam kad) */
+.poster-img-wrapper {
+    width: 100%;
+    aspect-ratio: 2 / 3; /* Nisbah potret poster filem yang sangat kemas */
+    border-radius: 24px;  /* Lengkungan bucu yang cantik seperti dalam gambar */
+    overflow: hidden;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Mengawal Gambar Asal */
+.poster-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* TRIK HITAM PUTIH UTAMA */
+    filter: grayscale(100%) brightness(85%); 
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+/* Ruang Teks Maklumat di Bawah Kad */
+.poster-info {
+    margin-top: 15px;
+    padding: 0 5px;
+}
+
+.poster-info h3 {
+    font-size: 0.9rem;
+    color: #fff;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.poster-info .poster-tag {
+    font-size: 0.7rem;
+    color: #888;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   KESAN INTERAKTIF APABILA SENTUH (HOVER EFFECTS)
+   ========================================================================== */
+
+/* 1. Gambar bertukar jadi WARNA SEBENAR & membesar sikit */
+.poster-card:hover .poster-img-wrapper img {
+    filter: grayscale(0%) brightness(100%); /* Keluar warna asal */
+    transform: scale(1.05); /* Efek zoom masuk lembut */
+}
+
+/* 2. Kotak gambar ada kesan glow cyan halus & border menyala */
+.poster-card:hover .poster-img-wrapper {
+    border-color: #00ffff;
+    box-shadow: 0 15px 35px rgba(0, 255, 255, 0.2);
+}
+
+/* 3. Kad naik atas sikit lagi bila kena hover */
+.poster-card:hover {
+    transform: translateY(-10px) !important; /* Batalkan posisi asal sekejap untuk meluncur naik */
+}
+
+/* Teks tajuk bertukar warna cyan bila di-hover */
+.poster-card:hover .poster-info h3 {
+    color: #00ffff;
+}
+
+/* REKA BENTUK RESPONSIF (Phone & Tablet) */
+@media (max-width: 992px) {
+    .photo-poster-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 20px;
+    }
+    /* Matikan fungsi bertingkat di skrin kecil supaya tak bertindih */
+    .card-pos-1, .card-pos-2, .card-pos-3, .card-pos-4 {
+        transform: translateY(0px) !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .photo-poster-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* ==========================================================================
+   FORMULA SKALA SIMETRI
+   ========================================================================== */
+.phone-outer {
+    width: 110px;
+    height: 220px;
+    transform: scale(0.85);
+}
+
+.phone-inner {
+    width: 130px;
+    height: 260px;
+    transform: scale(0.95);
+}
+
+.phone-main {
+    width: 180px;
+    height: 360px;
+    z-index: 10;
+    border: 1px solid rgba(0, 0, 0, 0.3); 
+}
+
+/* Butang Play Atas Gambar */
+.play-button-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.5px solid #fff;
+}
+
+.play-triangle {
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 14px solid #fff;
+    margin-left: 3px;
+}
+
+/* ==========================================================================
+   KOTAK PENERANGAN DI BAHAGIAN BAWAH (WARNA TAJAM / KONTRA)
+   ========================================================================== */
+.game-description-box {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.game-name {
+    font-size: 1.2rem;
+    font-weight: 700; /* Tebalkan sikit */
+    color: #111111; /* Nama game tukar jadi Hitam Pekat */
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    font-family: 'Georgia', serif; 
+}
+
+.game-textbox {
+    border: 1.5px solid #2d3748; /* Border kotak warna kelabu gelap yang kukuh */
+    border-radius: 10px;
+    padding: 20px 30px;
+    background: transparent; 
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.game-textbox p {
+    font-size: 0.95rem;
+    color: #1a202c; /* Teks penerangan warna hitam charcoal (sangat jelas & tak pudar) */
+    font-weight: 500;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ==========================================================================
+   EFFECT HOVER BIASA
+   ========================================================================== */
+.game-phone:hover {
+    transform: scale(1.02) translateY(-5px); 
+    border-color: rgba(0, 0, 0, 0.5);
+}
+
+.phone-main:hover {
+    transform: scale(1.04) translateY(-5px);
+}
+
+/* RESPONSIVE LAYOUT */
+@media (max-width: 992px) {
+    .game-display-container {
+        flex-direction: column;
+        min-height: auto;
+    }
+    .game-phones-flex {
+        flex-wrap: wrap;
+    }
+    .game-phone {
+        transform: none !important;
+        width: 140px !important;
+        height: 280px !important;
+    }
+    .game-mascot {
+        display: none; 
+    }
+}
+
+/* LAYOUT UTAMA BLOG */
+.blog-main-layout {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    align-items: flex-start;
+}
+
+.blog-articles-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.blog-sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: sticky;
+    top: 100px;
+}
+
+/* KAD ARTIKEL BLOG */
+.blog-card {
+    display: flex;
+    background: #fff;
+    border: 1px solid #000;
+    box-shadow: 4px 4px 0px #000; /* Kesan Pop Art Real */
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000;
+}
+
+.blog-thumb {
+    position: relative;
+    width: 200px;
+    min-width: 200px;
+}
+
+.blog-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #000;
+    color: #fff;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.blog-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.blog-meta {
+    font-size: 12px;
+    color: #555;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 8px;
+}
+
+.blog-title {
+    font-size: 18px;
+    font-weight: 800; /* Hitam Pekat */
+    color: #000;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.blog-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.blog-excerpt {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.blog-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed #ccc;
+    padding-top: 10px;
+}
+
+.blog-readmore {
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    margin-left: 10px;
+    color: #444;
+}
+
+/* SIDEBAR WIDGETS */
+.sidebar-widget {
+    border: 1px solid #000;
+    padding: 20px;
+    background: #fff;
+}
+
+.sidebar-widget h3 {
+    font-size: 15px;
+    font-weight: 800;
+    border-bottom: 2px solid #000;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.search-wrapper {
+    display: flex;
+    border: 1px solid #000;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    outline: none;
+}
+
+.search-wrapper button {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.sidebar-widget ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-widget ul li {
+    margin-bottom: 12px;
+    font-size: 13px;
+}
+
+.sidebar-widget ul li a {
+    color: #000;
+    font-weight: 700;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar-widget ul li span {
+    font-size: 11px;
+    color: #666;
+}
+
+.tags-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-item {
+    border: 1px solid #000;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    background: #f9f9f9;
+}
+
+/* NEWSLETTER BOX */
+.newsletter-box-clean {
+    margin-top: 50px;
+    border: 2px solid #000;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f4f4f4;
+}
+
+.newsletter-box-clean h3 {
+    font-weight: 800;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.news-form {
+    display: flex;
+    gap: 10px;
+}
+
+.news-form input {
+    padding: 10px 15px;
+    border: 1px solid #000;
+    width: 250px;
+}
+
+.news-btn {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* RESPONSIVE UNTUK SMARTPHONE */
+@media (max-width: 768px) {
+    .blog-main-layout { flex-direction: column; }
+    .blog-card { flex-direction: column; }
+    .blog-thumb { width: 100%; height: 150px; }
+    .newsletter-box-clean { flex-direction: column; gap: 20px; text-align: center; }
+}/* =======================================
+   REKA LETAK GRID BLOG (KANDUNGAN + SIDEBAR)
+   ======================================= */
+.main-blog-layout {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+/* Kawasan Kandungan Projek (Kiri) */
+.main-blog-layout .project-detail-section {
+    flex: 2.5; /* Mengambil ruang lebih besar */
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* Kawasan Sidebar Blog (Kanan) */
+.blog-sidebar-widget-area {
+    flex: 1; /* Ruang lebih kecil di sisi */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: sticky;
+    top: 90px; /* Melekat bila skrol ke bawah */
+}
+
+/* GAYA KOTAK WIDGET SIDEBAR (MINIMALIS & HITAM PEKAT) */
+.sidebar-widget {
+    background: #ffffff;
+    border: 1px solid #000000;
+    box-shadow: 4px 4px 0px #000000; /* Kesan bayang Pop Art */
+    padding: 20px;
+}
+
+.widget-title {
+    font-size: 14px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    color: #000000;
+}
+
+/* Carian Blog */
+.blog-search-bar {
+    display: flex;
+    border: 1px solid #000000;
+}
+.blog-search-bar input {
+    width: 100%;
+    padding: 8px 12px;
+    border: none;
+    outline: none;
+    font-size: 13px;
+}
+.blog-search-bar button {
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+/* Profil Penulis */
+.author-info {
+    text-align: center;
+}
+.author-avatar {
+    width: 60px;
+    height: 60px;
+    background: #000000;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    margin: 0 auto 10px;
+    font-size: 14px;
+}
+.author-info h4 {
+    font-weight: 800;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+.author-info p {
+    font-size: 12px;
+    color: #444444;
+    line-height: 1.5;
+}
+
+/* Senarai Trending */
+.trending-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.trending-list li {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #cccccc;
+}
+.trending-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.trending-list li a {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 13px;
+    display: block;
+    line-height: 1.4;
+}
+.trending-list li a:hover {
+    text-decoration: underline;
+}
+.trending-list li small {
+    color: #666666;
+    font-size: 11px;
+}
+
+/* Awan Tag */
+.blog-tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.b-tag {
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid #000000;
+    padding: 4px 8px;
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.b-tag:hover {
+    background: #000000;
+    color: #ffffff;
+}
+
+/* Newsletter Widget */
+.newsletter-widget p {
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: #333333;
+}
+.news-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #000000;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+.news-submit-btn {
+    width: 100%;
+    background: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+/* Efek Gambar Photography (Sentuh Baru Berwarna) */
+.poster-img-wrapper img {
+    filter: grayscale(100%);
+    transition: filter 0.6s ease, transform 0.6s ease;
+}
+.poster-card:hover .poster-img-wrapper img {
+    filter: grayscale(0%);
+    transform: scale(1.03);
+}
+
+/* RESPONSIVE: BILA BUKA DEKAT PHONE, SIDEBAR TURUN BAWAH */
+@media (max-width: 992px) {
+    .main-blog-layout {
+        flex-direction: column;
+    }
+    .blog-sidebar-widget-area {
+        width: 100%;
+        position: static;
+    }
+}
+
+/* ===================================================
+   CYBER-EDITORIAL SPLIT LAYOUT BY MZN.STUDIO (THE WOW)
+   =================================================== */
+.editorial-blog-body {
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Base Flex Box Skrin Pecah Dua */
+.editorial-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- SEBELAH KIRI: PANEL STATIK GAYA COVER MAJALAH --- */
+.magazine-left-panel {
+    flex: 1;
+    max-width: 380px;
+    background: #000000;
+    color: #ffffff;
+    border-right: 3px solid #000000;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+}
+
+.panel-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.nav-minimal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.giant-magazine-text {
+    font-size: 55px;
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    margin: 20px 0;
+    border-left: 6px solid #ffffff;
+    padding-left: 15px;
+}
+
+.sub-magazine {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #888;
+    display: block;
+}
+
+/* Teks Bergerak Otomatik (Marquee Effect) */
+.editorial-marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    background: #ffffff;
+    color: #000000;
+    padding: 5px 0;
+    font-size: 10px;
+    font-weight: 900;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+.marquee-inner {
+    display: inline-block;
+    animation: marqueeAnimation 15s linear infinite;
+}
+@keyframes marqueeAnimation {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.search-cyber {
+    display: flex;
+    border: 2px solid #ffffff;
+    margin-bottom: 15px;
+}
+.search-cyber input {
+    background: transparent;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    width: 100%;
+    font-size: 11px;
+    outline: none;
+}
+.search-cyber button {
+    background: #ffffff;
+    border: none;
+    color: #000;
+    padding: 0 15px;
+    cursor: pointer;
+}
+.author-bio {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #cccccc;
+}
+
+/* --- SEBELAH KANAN: KANDUNGAN YANG BOLEH DI-SKROL --- */
+.dynamic-scroll-feed {
+    flex: 2;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #f0f0f0;
+}
+
+/* Menu Atas Minimalis */
+.editorial-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border: 2px solid #000;
+    padding: 15px;
+    margin-bottom: 40px;
+    box-shadow: 4px 4px 0px #000;
+}
+.quick-links-title {
+    font-size: 11px;
+    font-weight: 900;
+}
+.mini-scroll-tags {
+    display: flex;
+    gap: 10px;
+}
+.scroll-tag-btn {
+    text-decoration: none;
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid #000;
+    padding: 4px 10px;
+    background: #fff;
+    transition: 0.2s;
+}
+.scroll-tag-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* Kontena Seksyen Kreatif */
+.editorial-section-wrapper {
+    background: #ffffff;
+    border: 2px solid #000000;
+    box-shadow: 6px 6px 0px #000000;
+    padding: 40px;
+    margin-bottom: 50px;
+    position: relative;
+}
+.editorial-section-wrapper-game {
+    background: #111111;
+    border: 2px solid #000000;
+    box-shadow: 6px 6px 0px #000000;
+    padding: 40px;
+    margin-bottom: 50px;
+}
+
+.editorial-header-block {
+    margin-bottom: 30px;
+    border-bottom: 2px dashed #000;
+    padding-bottom: 20px;
+}
+.section-tag-num {
+    font-size: 11px;
+    font-weight: 800;
+    color: #666;
+    letter-spacing: 1px;
+}
+.editorial-section-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #000;
+    margin-top: 5px;
+    letter-spacing: -0.5px;
+}
+.editorial-abstract {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #444;
+    max-width: 600px;
+    margin-top: 10px;
+}
+
+/* Footer Di Dalam Ruang Skrol */
+.editorial-footer {
+    text-align: center;
+    padding: 30px 0;
+    font-size: 11px;
+    font-weight: 700;
+    color: #666;
+    border-top: 2px solid #000;
+    margin-top: 60px;
+}
+
+/* Khas untuk Efek Gambar Potret (Hitam Putih Ke Warna) */
+.poster-img-wrapper img {
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+.poster-card:hover .poster-img-wrapper img {
+    filter: grayscale(0%);
+}
+
+/* SKRIN RESPONSIVE (Bila Dr tengok guna phone/tablet kecil) */
+@media (max-width: 900px) {
+    .editorial-container { flex-direction: column; height: auto; overflow: visible; }
+    .magazine-left-panel { max-width: 100%; height: auto; position: static; }
+    .dynamic-scroll-feed { height: auto; overflow-y: visible; padding: 20px; }
+}
+/* ===================================================
+   CYBER-EDITORIAL SPLIT LAYOUT BY MZN.STUDIO (THE WOW)
+   =================================================== */
+.editorial-blog-body {
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Base Flex Box Skrin Pecah Dua */
+.editorial-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- SEBELAH KIRI: PANEL STATIK GAYA COVER MAJALAH --- */
+.magazine-left-panel {
+    flex: 1;
+    max-width: 380px;
+    background: #000000;
+    color: #ffffff;
+    border-right: 3px solid #000000;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 10;
+}
+
+.panel-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.nav-minimal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.giant-magazine-text {
+    font-size: 55px;
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    margin: 20px 0;
+    border-left: 6px solid #ffffff;
+    padding-left: 15px;
+}
+
+.sub-magazine {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #888;
+    display: block;
+}
+
+/* Teks Bergerak Otomatik (Marquee Effect) */
+.editorial-marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    background: #ffffff;
+    color: #000000;
+    padding: 5px 0;
+    font-size: 10px;
+    font-weight: 900;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+.marquee-inner {
+    display: inline-block;
+    animation: marqueeAnimation 15s linear infinite;
+}
+@keyframes marqueeAnimation {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.search-cyber {
+    display: flex;
+    border: 2px solid #ffffff;
+    margin-bottom: 15px;
+}
+.search-cyber input {
+    background: transparent;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    width: 100%;
+    font-size: 11px;
+    outline: none;
+}
+.search-cyber button {
+    background: #ffffff;
+    border: none;
+    color: #000;
+    padding: 0 15px;
+    cursor: pointer;
+}
+.author-bio {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #cccccc;
+}
+
+/* --- SEBELAH KANAN: KANDUNGAN YANG BOLEH DI-SKROL --- */
+.dynamic-scroll-feed {
+    flex: 2;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #f0f0f0;
+}
+
+/* Menu Atas Minimalis */
+.editorial-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border: 2px solid #000;
+    padding: 15px;
+    margin-bottom: 40px;
+    box-shadow: 4px 4px 0px #000;
+}
+.quick-links-title {
+    font-size: 11px;
+    font-weight: 900;
+}
+.mini-scroll-tags {
+    display: flex;
+    gap: 10px;
+}
+.scroll-tag-btn {
+    text-decoration: none;
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid #000;
+    padding: 4px 10px;
+    background: #fff;
+    transition: 0.2s;
+}
+.scroll-tag-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* Kontena Seksyen Kreatif */
+.editorial-section-wrapper {
+    background: #ffffff;
+    border: 2px solid #000000;
+    box-shadow: 6px 6px 0px #000000;
+    padding: 40px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.editorial-header-block {
+    margin-bottom: 30px;
+    border-bottom: 2px dashed #000;
+    padding-bottom: 20px;
+}
+.section-tag-num {
+    font-size: 11px;
+    font-weight: 800;
+    color: #666;
+    letter-spacing: 1px;
+}
+.editorial-section-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: #000;
+    margin-top: 5px;
+    letter-spacing: -0.5px;
+}
+.editorial-abstract {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #444;
+    max-width: 600px;
+    margin-top: 10px;
+}
+
+/* Footer Di Dalam Ruang Skrol */
+.editorial-footer {
+    text-align: center;
+    padding: 30px 0;
+    font-size: 11px;
+    font-weight: 700;
+    color: #666;
+    border-top: 2px solid #000;
+    margin-top: 60px;
+}
+
+/* Khas untuk Efek Gambar Potret (Hitam Putih Ke Warna) */
+.poster-img-wrapper img {
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+.poster-card:hover .poster-img-wrapper img {
+    filter: grayscale(0%);
+}
+
+/* ===================================================
+   🔍 KAWALAN SAIZ GRAPHIC DESIGN BAHARU (TAMBAHAN)
+   =================================================== */
+.scaled-down-gallery {
+    max-width: 100%;
+    margin: 0 auto;
+    display: grid;
+    /* Setiap gambar hadkan saiz minima kepada 160px sahaja (lebih kecil & compact) */
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)) !important; 
+    gap: 15px !important;
+}
+
+.scaled-down-gallery .art-card {
+    background: #ffffff;
+    border: 1px solid #000000;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.scaled-down-gallery .art-frame {
+    height: 160px !important; /* Rendahkan ketinggian kotak grid gambar */
+    overflow: hidden;
+    background: #f9f9f9;
+}
+
+.scaled-down-gallery .art-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.scaled-down-gallery .art-meta h3 {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 8px 0 0 0;
+    letter-spacing: 0.5px;
+}
+
+/* SKRIN RESPONSIVE (Bila Dr tengok guna phone/tablet kecil) */
+@media (max-width: 900px) {
+    .editorial-container { flex-direction: column; height: auto; overflow: visible; }
+    .magazine-left-panel { max-width: 100%; height: auto; position: static; }
+    .dynamic-scroll-feed { height: auto; overflow-y: visible; padding: 20px; }
+    .scaled-down-gallery { grid-template-columns: repeat(2, 1fr) !important; }
+}
+/* ===================================================
+   🎨 GRAPHIC DESIGN: PHOTOGRAPHY STYLE FOR BLOG (FIXED)
+   =================================================== */
+
+/* Kontena utama untuk susunan poster makanan */
+.my-graphic-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px; 
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 100%;
+    margin: 40px auto 0 auto;
+    position: relative;
+    background: transparent;
+}
+
+/* KAD ARTWORK (Dihadkan skop supaya butang navigasi blog tak ikut hancur) */
+.my-graphic-gallery .art-card {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none;
+    margin: 0;
+    padding: 0; 
+    
+    background: transparent; 
+    border: none; 
+    box-shadow: none;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* FRAME GAMBAR POSTER MAKANAN (Bucu melengkung ikut style fotografi) */
+.my-graphic-gallery .art-frame {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: none; 
+    border-radius: 24px; 
+    background: #111111; 
+}
+
+/* Gambar dalam frame */
+.my-graphic-gallery .art-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    display: block;
+    filter: grayscale(0%); 
+    transition: transform 0.4s ease;
+}
+
+/* Hover zoom halus pada poster makanan */
+.my-graphic-gallery .art-card:hover .art-frame img {
+    transform: scale(1.03);
+}
+
+/* TEKS PENERANGAN DI BAWAH GAMBAR */
+.my-graphic-gallery .art-meta {
+    position: relative;
+    margin-top: 15px; 
+    padding: 0 5px;
+    display: block;
+    text-align: left;
+}
+
+.my-graphic-gallery .art-meta h3 {
+    font-size: 11px;
+    font-weight: 700;
+    color: #777777; 
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 1.5px;
+    line-height: 1.3;
+}
+
+/* 📐 UKURAN SAIZ ASAL POSTER MAKANAN AWAK */
+.my-graphic-gallery .pic-1 { width: 291px; }
+.my-graphic-gallery .pic-1 .art-frame { height: 412px; }
+
+.my-graphic-gallery .pic-2 { width: 294px; }
+.my-graphic-gallery .pic-2 .art-frame { height: 416px; }
+
+.my-graphic-gallery .pic-3 { width: 208px; }
+.my-graphic-gallery .pic-3 .art-frame { height: 416px; }
+
+.my-graphic-gallery .pic-4 { width: 386px; }
+.my-graphic-gallery .pic-4 .art-frame { height: 290px; }
+
+.my-graphic-gallery .pic-5 { width: 290px; }
+.my-graphic-gallery .pic-5 .art-frame { height: 290px; }
+
+.my-graphic-gallery .pic-6 { width: 312px; }
+.my-graphic-gallery .pic-6 .art-frame { height: 312px; }
+
+.my-graphic-gallery .pic-7 { width: 498px; }
+.my-graphic-gallery .pic-7 .art-frame { height: 312px; }
+
+/* 📱 RESPONSIVE SMARTPHONE */
+@media (max-width: 768px) {
+    .my-graphic-gallery .art-card {
+        width: 100%;
+        max-width: 100%;
+    }
+    .my-graphic-gallery .art-frame {
+        height: 250px;
+        border-radius: 16px;
+    }
+}
+
+/* ==========================================================================
+   📸 PART 2: TULISAN PHOTOGRAPHY (FORCE RESET - ANTI-KELUAR KOTAK)
+   ========================================================================= */
+#photography .clean-art-gallery {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 35px !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    position: relative !important;
+    width: 100% !important;
+    margin-top: 20px !important;
+    height: auto !important; /* Paksa kontena utama ikut tinggi kandungan */
+    padding-bottom: 60px !important; /* 🌟 Beri ruang lantai ekstra sebelum garisan hitam bawah */
+}
+
+#photography .clean-art-gallery .art-card {
+    position: relative !important;
+    top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
+    transform: none !important; margin: 0 !important; padding: 0 !important;
+    background: transparent !important; border: none !important; box-shadow: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: calc(25% - 25px) !important; 
+    min-width: 200px !important;
+    
+    /* 🌟 PAKSA KAD IKUT TINGGI TULISAN SECARA TOTAL */
+    height: auto !important; 
+    max-height: none !important;
+    overflow: visible !important; 
+}
+
+#photography .clean-art-gallery .art-frame {
+    width: 100% !important;
+    height: 350px !important; /* Kotak gambar hitam putih tetap 350px */
+    overflow: hidden !important;
+    border-radius: 24px !important; 
+    border: none !important;
+    flex-shrink: 0 !important; /* Halang gambar daripada mengecil */
+}
+
+#photography .clean-art-gallery .art-frame img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: cover !important;
+}
+
+/* 🛠️ BLOK TULISAN (DIKUNCI DAN DITOLAK MASUK) */
+#photography .clean-art-gallery .art-meta {
+    position: relative !important;
+    display: block !important;
+    text-align: left !important;
+    width: 100% !important;
+    
+    /* 🌟 Tolak tulisan menjauhi gambar dan halang dia melimpah */
+    margin: 15px 0 0 0 !important; 
+    height: auto !important;
+    overflow: visible !important;
+}
+
+#photography .clean-art-gallery .art-meta h3 {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #777777 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    
+    /* 🌟 Settle masalah perkataan panjang */
+    white-space: normal !important; 
+    word-break: break-word !important; /* Kalau perkataan panjang gila, dia auto-potong masuk baris baru */
+    line-height: 1.4 !important;
+    display: block !important;
+}
+/* ==========================================================================
+   💻 ABOUT ME: SOFTWARE SKILLS - MAGAZINE 2-COLUMN STYLE (INSPIRED)
+   ========================================================================== */
+.software-skills-section {
+    margin-top: 45px;
+    padding-top: 30px;
+    border-top: 1px dashed var(--border-color, #000000);
+}
+
+.software-skills-section h3 {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--text-color, #000000);
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+/* Memecahkan kandungan kepada 2 lajur seimbang */
+.skills-magazine-grid {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+}
+
+.skills-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Jarak antara kapsul ke bawah */
+}
+
+/* Reka bentuk kotak kapsul memanjang (Tiru gaya susunan imej, kekal tema minimalis) */
+.skill-capsule {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: 1px solid var(--border-color, #000000);
+    padding: 10px 20px;
+    border-radius: 30px; /* Bentuk bujur kapsul yang kemas */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Jarakkan ikon di sebelah kiri */
+.skill-capsule i {
+    font-size: 14px;
+    width: 25px;
+    text-align: left;
+    color: var(--text-color, #000000);
+    transition: transform 0.3s ease;
+}
+
+/* Gaya teks nama software */
+.skill-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase; /* Tukar jadi huruf besar biar seiring konsep editorial */
+    color: var(--text-color, #000000);
+}
+
+/* 🔥 EFEK HOVER MODEN (Bila mouse lalu, dia invert warna dengan kemas) */
+.skill-capsule:hover {
+    background-color: var(--text-color, #000000);
+    transform: translateX(5px); /* Ada kesan anjakan ke kanan sikit bila di-hover */
+}
+
+.skill-capsule:hover .skill-name,
+.skill-capsule:hover i {
+    color: var(--bg-color, #F3F3F1) !important;
+}
+
+.skill-capsule:hover i {
+    transform: scale(1.1);
+}
+
+/* 📱 RESPONSIVE: Kalau skrin phone kecil, auto tukar jadi 1 lajur balik supaya tak sempit */
+@media (max-width: 768px) {
+    .skills-magazine-grid {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+/* ==========================================================================
+   👥 TAMBAHAN BARU: STRUKTUR GAMBAR PROFIL (ABOUT ME)
+   ========================================================================== */
+.about-grid {
+    display: flex !important;
+    gap: 50px !important;
+    align-items: flex-start !important;
+    margin-top: 40px !important;
+}
+
+/* Kotak Frame Gambar Profil (Ganti .graphic-box lama) */
+/* ==========================================================================
+   👥 TAMBAHAN BARU: GAMBAR PROFIL (TANPA KOTAK / FLOATING STYLE)
+   ========================================================================== */
+.about-grid {
+    display: flex !important;
+    gap: 50px !important;
+    align-items: flex-start !important;
+    margin-top: 40px !important;
+}
+
+/* Buang border & background, biarkan gambar sahaja */
+.profile-image-box {
+    flex: 0 0 380px !important; /* Kekalkan lebar gambar formal */
+    height: auto !important;     /* Biar tinggi ikut nisbah asal gambar */
+    border: none !important;     /* ❌ BUANG KOTAK */
+    background: transparent !important; /* ❌ BUANG BACKGROUND */
+    overflow: visible !important;
+}
+
+.profile-img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    border-radius: 0px !important; /* Buang pusingan bucu kalau ada */
+    object-fit: contain !important;
+}
+
+
+/* ==========================================================================
+   💻 TAMBAHAN BARU: SOFTWARE SKILLS (GAYA 2 LAJUR KAPSUL)
+   ========================================================================== */
+.software-skills-section {
+    margin-top: 45px !important;
+    padding-top: 30px !important;
+    border-top: 1px dashed var(--border-color, #000000) !important;
+}
+
+.software-skills-section h3 {
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 25px !important;
+    text-transform: uppercase !important;
+}
+
+.skills-magazine-grid {
+    display: flex !important;
+    gap: 30px !important;
+    width: 100% !important;
+}
+
+.skills-column {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+}
+
+.skill-capsule {
+    display: flex !important;
+    align-items: center !important;
+    background: transparent !important;
+    border: 1px solid var(--border-color, #000000) !important;
+    padding: 10px 20px !important;
+    border-radius: 30px !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.skill-capsule i {
+    font-size: 14px !important;
+    width: 25px !important;
+    text-align: left !important;
+    color: var(--text-color, #000000) !important;
+}
+
+.skill-name {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+}
+
+.skill-capsule:hover {
+    background-color: var(--text-color, #000000) !important;
+    transform: translateX(5px) !important;
+}
+
+.skill-capsule:hover .skill-name,
+.skill-capsule:hover i {
+    color: var(--bg-color, #F3F3F1) !important;
+}
+
+
+/* ==========================================================================
+   👥 TAMBAHAN BARU: GAMBAR PROFIL (TANPA KOTAK / FLOATING STYLE)
+   ========================================================================== */
+.about-grid {
+    display: flex !important;
+    gap: 60px !important;
+    align-items: flex-start !important;
+    margin-top: 40px !important;
+    margin-bottom: 60px !important; /* Jarak sebelum seksyen skills di bawah */
+}
+
+.profile-image-box {
+    flex: 0 0 350px !important; 
+    height: auto !important;     
+    border: none !important;     
+    background: transparent !important; 
+    overflow: visible !important;
+}
+
+.profile-img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: contain !important;
+}
+
+.about-text {
+    flex: 1 !important;
+}
+
+
+/* ==========================================================================
+   💻 STYLE SAYA: SOFTWARE SKILLS MEMANJANG (EDITORIAL SHOWCASE)
+   ========================================================================== */
+.software-skills-fullwidth {
+    width: 100% !important;
+    margin-top: 60px !important;
+    padding-top: 20px !important;
+}
+
+/* Garisan tajuk ala-ala majalah premium */
+.skills-header-line {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+    margin-bottom: 35px !important;
+}
+
+.skills-header-line h3 {
+    font-size: 12px !important;
+    font-weight: 900 !important;
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
+    color: var(--text-color, #000000) !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+}
+
+/* Garisan melintang halus merentasi website */
+.line-filler {
+    flex: 1 !important;
+    height: 1px !important;
+    background-color: var(--border-color, #000000) !important;
+    opacity: 0.3 !important;
+}
+
+/* Grid automatik memanjang sepanjang layout */
+.skills-showcase-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 150px)) !important; /* Auto susun sebaris mengikut kelebaran skrin */
+    gap: 16px !important;
+    width: 100% !important;
+}
+
+/* Gaya kapsul minimalis premium */
+.skill-capsule-style {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    background-color: transparent !important;
+    border: 1px solid var(--border-color, #000000) !important;
+    padding: 14px 20px !important;
+    border-radius: 50px !important; /* Kekalkan rupa kapsul bulat */
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    cursor: pointer !important;
+}
+
+.skill-capsule-style i {
+    font-size: 15px !important;
+    color: var(--text-color, #000000) !important;
+    transition: transform 0.3s ease !important;
+}
+
+.skill-title {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    color: var(--text-color, #000000) !important;
+}
+
+/* 🔥 Efek Hover Kreatif Style Saya */
+.skill-capsule-style:hover {
+    background-color: var(--text-color, #000000) !important;
+    border-color: var(--text-color, #000000) !important;
+    transform: translateY(-4px) !important; /* Butang naik ke atas sikit */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important; /* Efek bayang lembut */
+}
+
+/* Tukar warna ikon & teks jadi putih/terbalik bila mouse lalu */
+.skill-capsule-style:hover .skill-title,
+.skill-capsule-style:hover i {
+    color: var(--bg-color, #F3F3F1) !important;
+}
+
+.skill-capsule-style:hover i {
+    transform: rotate(8deg) scale(1.1) !important; /* Ikon senget sikit masa hover, nampak hidup! */
+}
+
+
+/* ==========================================================================
+   📱 RESPONSIVE (BILA BUKA DI TELEFON)
+   ========================================================================== */
+@media (max-width: 900px) {
+    .about-grid {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 30px !important;
+    }
+    .profile-image-box {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 320px !important;
+    }
+    .skills-showcase-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important; /* Tukar saiz grid supaya tak sempit kat skrin phone */
+        gap: 12px !important;
+    }
+}
+/* ==========================================================================
+   🤝 TAMBAHAN BARU: PERSONAL SKILLS (EDITORIAL VERTICAL CARDS)
+   ========================================================================== */
+.personal-skills-fullwidth {
+    width: 100% !important;
+    margin-top: 70px !important; /* Jarak yang seimbang dari software skills */
+    margin-bottom: 50px !important;
+}
+
+/* Grid memanjang untuk 5 kad sebaris */
+.personal-skills-grid {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important; /* Bahagi 5 lajur sama rata */
+    gap: 20px !important;
+    width: 100% !important;
+}
+
+/* Gaya reka bentuk kad menegak seperti image_3b1027.png (Versi Minimalis) */
+.personal-card {
+    background-color: transparent !important;
+    border: 1px solid var(--border-color, #000000) !important;
+    border-radius: 20px !important; /* Bucu membulat yang kemas */
+    padding: 30px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    min-height: 260px !important; /* Pastikan semua kad sama tinggi */
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Blok bahagian atas kad */
+.card-header-block {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-bottom: 20px !important;
+}
+
+.personal-card h4 {
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    color: var(--text-color, #000000) !important;
+    line-height: 1.4 !important;
+    min-height: 34px !important; /* Mengunci ketinggian tulisan tajuk supaya garisan sebaris */
+}
+
+/* Garisan pembahagi di dalam kad (Tiru elemen putih di imej asal) */
+.card-divider-line {
+    width: 80% !important;
+    height: 1px !important;
+    background-color: var(--border-color, #000000) !important;
+    margin-top: 15px !important;
+    opacity: 0.3 !important;
+}
+
+/* Teks huraian di dalam kad */
+.personal-card p {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+    color: var(--text-color, #000000) !important;
+    opacity: 0.75 !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
+}
+
+/* 🔥 Efek Hover Interaktif Pada Kad */
+.personal-card:hover {
+    background-color: var(--text-color, #000000) !important;
+    transform: translateY(-6px) !important; /* Kad naik ke atas sedikit */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08) !important; /* Kesan bayang lembut */
+}
+
+/* Songsangkan warna teks dan garisan bila di-hover */
+.personal-card:hover h4,
+.personal-card:hover p {
+    color: var(--bg-color, #F3F3F1) !important;
+}
+
+.personal-card:hover .card-divider-line {
+    background-color: var(--bg-color, #F3F3F1) !important;
+    opacity: 0.5 !important;
+}
+
+/* ==========================================================================
+   📱 RESPONSIVE (UNTUK PENGGUNA TELEFON / TABLET)
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .personal-skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important; /* Auto susun ke bawah jika skrin sempit */
+        gap: 16px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .personal-card {
+        min-height: auto !important;
+        padding: 25px 20px !important;
+    }
+}
+/* ==========================================================================
+   🎓 TAMBAHAN BARU: EDUCATION (MINIMALIST TIMELINE STYLE)
+   ========================================================================== */
+.education-section-fullwidth {
+    width: 100% !important;
+    margin-top: 70px !important; /* Jarak sekata dengan seksyen atas */
+    margin-bottom: 80px !important; /* Jarak yang luas sebelum footer */
+}
+
+/* Bekas struktur garis masa */
+.education-timeline {
+    position: relative !important;
+    max-width: 800px !important; /* Hadkan kelebaran teks bio-akademik supaya sedap dibaca */
+    margin-top: 30px !important;
+    padding-left: 20px !important;
+    border-left: 1px solid var(--border-color, #000000) !important; /* Garisan vertikal timeline halus */
+}
+
+/* Setiap baris akademik */
+.timeline-item {
+    position: relative !important;
+    margin-bottom: 40px !important;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0 !important; /* Buang jarak margin bawah untuk blok terakhir */
+}
+
+/* Titik nod bulatan garis masa (menggantikan bullet biasa) */
+.timeline-item::before {
+    content: '' !important;
+    position: absolute !important;
+    left: -25.5px !important; /* Letak tepat atas garisan paksi */
+    top: 4px !important;
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% !important;
+    background-color: var(--text-color, #000000) !important;
+    border: 2px solid var(--bg-color, #F3F3F1) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Paparan tahun di atas tajuk */
+.timeline-year {
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px !important;
+    color: var(--text-color, #000000) !important;
+    opacity: 0.6 !important;
+    margin-bottom: 6px !important;
+}
+
+/* Blok kandungan teks */
+.timeline-content h4 {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    line-height: 1.4 !important;
+    text-transform: uppercase !important;
+    color: var(--text-color, #000000) !important;
+    margin-bottom: 5px !important;
+    letter-spacing: -0.2px !important;
+}
+
+.timeline-content .institution {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    opacity: 0.8 !important;
+    color: var(--text-color, #000000) !important;
+    margin-bottom: 10px !important;
+}
+
+/* Lencana / Badge mini bagi keputusan pencapaian (CGPA/Result) */
+.academic-badge {
+    display: inline-block !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border: 1px solid var(--border-color, #000000) !important;
+    padding: 4px 12px !important;
+    border-radius: 4px !important; /* Kotak tajam editorial berkepala sedikit bulat */
+    opacity: 0.9 !important;
+}
+
+/* 🔥 Efek interaktif ringan masa di-hover */
+.timeline-item:hover::before {
+    transform: scale(1.4) !important; /* Titik nod membesar sedikit */
+    background-color: var(--border-color, #000000) !important;
+}
+
+/* ==========================================================================
+   📱 RESPONSIVE (TELEFON BIMBIT)
+   ========================================================================== */
+@media (max-width: 600px) {
+    .education-timeline {
+        padding-left: 15px !important;
+    }
+    .timeline-item::before {
+        left: -20.5px !important;
+    }
+    .timeline-content h4 {
+        font-size: 13px !important;
+    }
+}
+
+/* ==========================================================================
+   🦊 BIKEBEAR STYLING RECONSTRUCTED (KEMAS, STABIL & ANTI-BERTERABUR)
+   ========================================================================== */
+
+/* Glow Ambient Effect */
+.ambient-glow {
+    position: fixed !important;
+    top: -10% !important; left: -10% !important;
+    width: 500px !important; height: 500px !important;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, rgba(0,0,0,0) 70%) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+/* --- SECTION 1: HERO ADJUSTMENT --- */
+.hero-clean-grid {
+    display: grid !important;
+    grid-template-columns: 380px 1fr !important; /* Susun 2 lajur tetap */
+    gap: 60px !important;
+    align-items: center !important;
+    padding-bottom: 60px !important;
+    border-bottom: 1px solid var(--border-color, #000000) !important;
+}
+
+.hero-image-side {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.floating-portrait {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 350px !important;
+    display: block !important;
+    /* Efek bayang pekat brutalist tanpa double imej html */
+    filter: drop-shadow(15px 15px 0px var(--border-color, #000000)) !important;
+    transition: transform 0.3s ease, filter 0.3s ease !important;
+}
+
+.floating-portrait:hover {
+    transform: translateY(-8px) !important;
+    filter: drop-shadow(22px 22px 0px var(--border-color, #000000)) !important;
+}
+
+.sub-tag {
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: 2px !important;
+    opacity: 0.6 !important;
+}
+
+.main-title {
+    font-family: "Playfair Display", serif !important;
+    font-size: 56px !important;
+    font-weight: 900 !important;
+    margin: 10px 0 20px 0 !important;
+    text-transform: uppercase !important;
+}
+
+.hollow-text {
+    -webkit-text-stroke: 1.5px var(--border-color, #000000) !important;
+    color: transparent !important;
+}
+
+.bio-desc {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    opacity: 0.8 !important;
+    margin-bottom: 30px !important;
+}
+
+.info-list-brutalist {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+}
+
+.info-item {
+    border-bottom: 1px dashed rgba(0,0,0,0.15) !important;
+    padding-bottom: 8px !important;
+    font-size: 13px !important;
+}
+
+.info-item span {
+    font-weight: 800 !important;
+    width: 130px !important;
+    display: inline-block !important;
+    opacity: 0.5 !important;
+}
+
+/* --- SECTION 2: MARQUEE TEXT RUNNING --- */
+.marquee-skills-container {
+    overflow: hidden !important;
+    display: flex !important;
+    background: var(--text-color, #000000) !important;
+    color: var(--bg-color, #F3F3F1) !important;
+    margin: 40px 0 !important;
+    padding: 15px 0 !important;
+    border-radius: 4px !important;
+}
+
+.marquee-track {
+    display: flex !important;
+    width: max-content !important;
+    animation: scrollMarquee 20s linear infinite !important;
+}
+
+.marquee-content {
+    display: flex !important;
+    justify-content: space-around !important;
+    white-space: nowrap !important;
+}
+
+.marquee-content span {
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    letter-spacing: 3px !important;
+    padding: 0 30px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+@keyframes scrollMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- TITLE REUSABLE --- */
+.section-wrapper {
+    margin-top: 60px !important;
+    padding-bottom: 60px !important;
+    border-bottom: 1px solid var(--border-color, #000000) !important;
+}
+
+.block-title {
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+    margin-bottom: 35px !important;
+}
+
+.block-title h2 {
+    font-family: "Playfair Display", serif !important;
+    font-size: 24px !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.5px !important;
+}
+
+.title-line {
+    flex: 1 !important;
+    height: 1px !important;
+    background: var(--border-color, #000000) !important;
+    opacity: 0.2 !important;
+}
+
+/* --- SECTION 3: BENTO BOX STABLE GRID --- */
+.bento-skills-layout {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+}
+
+.bento-card {
+    border: 1px solid var(--border-color, #000000) !important;
+    border-radius: 20px !important;
+    padding: 35px 25px !important;
+    position: relative !important;
+    background: transparent !important;
+    transition: background-color 0.3s, transform 0.3s !important;
+}
+
+.card-num {
+    position: absolute !important;
+    top: 25px; right: 25px;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    opacity: 0.3 !important;
+}
+
+.bento-card h3 {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    margin-bottom: 12px !important;
+}
+
+.bento-card p {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    opacity: 0.7 !important;
+}
+
+.card-w2 { grid-column: span 2 !important; }
+.card-h2 { grid-row: span 2 !important; }
+
+.bento-card:hover {
+    background: var(--text-color, #000000) !important;
+    color: var(--bg-color, #F3F3F1) !important;
+    transform: scale(1.015) !important;
+}
+
+/* --- SECTION 4: EDUCATION STABLE SPLIT --- */
+.education-split {
+    display: grid !important;
+    grid-template-columns: 300px 1fr !important;
+    gap: 40px !important;
+    border-bottom: none !important; /* Tutup border bawah untuk elemen terakhir */
+}
+
+.edu-left-heading h2 {
+    font-family: "Playfair Display", serif !important;
+    font-size: 36px !important;
+    font-weight: 900 !important;
+    line-height: 1.1 !important;
+}
+
+.edu-right-timeline {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+}
+
+.edu-row-card {
+    border: 1px solid var(--border-color, #000000) !important;
+    border-radius: 16px !important;
+    padding: 25px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 30px !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.edu-badge-zone {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    min-width: 110px !important;
+}
+
+.edu-date {
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    opacity: 0.5 !important;
+}
+
+.edu-grade {
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    background: var(--text-color, #000000) !important;
+    color: var(--bg-color, #F3F3F1) !important;
+    padding: 3px 8px !important;
+    border-radius: 4px !important;
+    text-align: center !important;
+}
+
+.edu-text-zone h3 {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    margin-bottom: 4px !important;
+}
+
+.edu-text-zone p {
+    font-size: 13px !important;
+    opacity: 0.7 !important;
+}
+
+.edu-row-card:hover {
+    transform: translateX(6px) !important;
+    box-shadow: -4px 4px 0px var(--border-color, #000000) !important;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 968px) {
+    .hero-clean-grid, .education-split {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+    .bento-skills-layout {
+        grid-template-columns: 1fr 1fr !important;
+    }
+    .card-w2 { grid-column: span 1 !important; }
+    .card-h2 { grid-row: span 1 !important; }
+    .floating-portrait { max-width: 280px !important; }
+}
+
+@media (max-width: 600px) {
+    .bento-skills-layout { grid-template-columns: 1fr !important; }
+    .main-title { font-size: 38px !important; }
+    .edu-row-card { flex-direction: column; align-items: flex-start; gap: 12px; }
+}

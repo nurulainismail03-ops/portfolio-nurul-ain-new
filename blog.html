@@ -3,15 +3,355 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog & Portfolio | Multimedia</title>
+    <title>portfolio | Premium Journal</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ==========================================================================
+           1. BASE STYLE & RESET (WARM LIGHT MODE BASE)
+           ========================================================================== */
+        html {
+            scroll-behavior: smooth !important;
+        }
+
+        body.editorial-blog-body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif !important;
+            /* 🎨 TUKAR: Ganti putih biasa kepada Premium Editorial Sand/Warm Alabaster */
+            background-color: #f3f0eb !important; 
+            color: #1e1e1e !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block !important;
+            transition: background-color 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.4s ease !important;
+        }
+
+        .navbar {
+            /* 🎨 TUKAR: Sesuai dengan warna latar warm */
+            border-bottom: 1px solid rgba(30, 30, 30, 0.08) !important;
+            background: #f3f0eb !important;
+            padding: 25px max(20px, 6vw) !important;
+            transition: background-color 0.4s ease, border-color 0.4s ease !important;
+        }
+
+        .master-journal-container {
+            max-width: 1300px !important;
+            margin: 0 auto !important;
+            padding: 0 max(20px, 4vw) !important;
+        }
+
+        /* HERO CLEAN INTRO */
+        .creative-hero-split {
+            display: grid !important;
+            grid-template-columns: 1.2fr 1fr !important;
+            gap: 40px !important;
+            padding: 100px 0 50px 0 !important;
+            border-bottom: 1px solid #1e1e1e !important;
+            transition: border-color 0.4s ease !important;
+        }
+
+        @media (max-width: 768px) {
+            .creative-hero-split { grid-template-columns: 1fr !important; padding: 60px 0 40px 0 !important; }
+        }
+
+        .hero-left-title h1 {
+            font-size: clamp(40px, 6vw, 75px) !important;
+            line-height: 0.9 !important;
+            font-weight: 800 !important;
+            letter-spacing: -2px !important;
+            text-transform: uppercase !important;
+            margin: 0 !important;
+        }
+
+        .hero-left-title span {
+            display: block !important;
+            font-weight: 300 !important;
+            font-style: italic !important;
+            text-transform: none !important;
+            letter-spacing: -1px !important;
+        }
+
+        .hero-right-desc {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: flex-end;
+        }
+
+        .hero-right-desc p {
+            font-size: 16px !important;
+            line-height: 1.7 !important;
+            color: #4a4a46 !important;
+            margin: 0 !important;
+            transition: color 0.4s ease !important;
+        }
+
+        /* NAVIGATION FILTER */
+        .journal-filter-bar {
+            padding: 25px 0 !important;
+            margin-bottom: 60px !important;
+            display: flex !important;
+            gap: 12px !important;
+            flex-wrap: wrap !important;
+        }
+
+        .journal-btn {
+            background: transparent !important;
+            color: #1e1e1e !important;
+            border: 1px solid #1e1e1e !important;
+            border-radius: 30px !important;
+            padding: 8px 22px !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            text-decoration: none !important;
+            transition: all 0.25s ease !important;
+        }
+
+        .journal-btn:hover {
+            background: #1e1e1e !important;
+            color: #f3f0eb !important;
+        }
+
+        .journal-section {
+            margin-bottom: 120px !important;
+        }
+
+        .journal-header {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            margin-bottom: 8px !important;
+        }
+
+        .journal-title {
+            font-size: 24px !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            margin: 0 !important;
+        }
+
+        .journal-tag {
+            font-size: 11px !important;
+            font-family: monospace !important;
+            background: #1e1e1e !important;
+            color: #f3f0eb !important;
+            padding: 4px 12px !important;
+            transition: background-color 0.4s ease, color 0.4s ease !important;
+        }
+
+        .project-metadata-grid {
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 15px !important;
+            /* 🎨 TUKAR: Garisan sempadan lebih kemas pada warna krim */
+            border-top: 1px solid rgba(30, 30, 30, 0.1) !important;
+            border-bottom: 1px solid rgba(30, 30, 30, 0.1) !important;
+            padding: 15px 0 !important;
+            margin: 20px 0 25px 0 !important;
+        }
+        @media (max-width: 576px) {
+            .project-metadata-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; }
+        }
+        .meta-item { font-size: 12px !important; line-height: 1.4 !important; }
+        .meta-label { font-family: monospace !important; color: #7a7a75 !important; text-transform: uppercase !important; display: block !important; margin-bottom: 4px !important; }
+        .meta-value { font-weight: 600 !important; color: #1e1e1e !important; }
+
+        .journal-section-desc {
+            font-size: 14px !important;
+            color: #555550 !important;
+            margin: 0 0 10px 0 !important;
+            line-height: 1.6 !important;
+            max-width: 800px !important;
+            transition: color 0.4s ease !important;
+        }
+
+        .section-label-divider {
+            font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase !important;
+            letter-spacing: 1.5px !important; color: #7a7a75 !important; margin: 50px 0 20px 0 !important; display: block !important;
+            transition: color 0.4s ease !important;
+        }
+
+        /* ==========================================================================
+           🎯 CAROUSEL & GRID STRUCTURE
+           ========================================================================== */
+        .carousel-outer-wrapper { position: relative !important; width: 100% !important; }
+        .premium-carousel-track { display: flex !important; gap: 24px !important; overflow-x: auto !important; scroll-snap-type: x mandatory !important; scroll-behavior: smooth !important; padding: 10px 5px 25px 5px !important; scrollbar-width: none !important; }
+        .premium-carousel-track::-webkit-scrollbar { display: none !important; }
+
+        /* 🎨 TUKAR: Card mod cerah diubah ke tona Off-White yang lebih cerah sikit (Bone White) supaya timbul dari background */
+        .carousel-web-card { flex: 0 0 440px !important; max-width: 85vw !important; scroll-snap-align: start !important; background: #faf9f6 !important; border-radius: 16px !important; border: 1px solid rgba(30, 30, 30, 0.05) !important; box-shadow: 0 8px 30px rgba(30,30,30,0.03) !important; overflow: hidden !important; display: flex !important; flex-direction: column !important; transition: all 0.4s cubic-bezier(0.2, 1, 0.2, 1) !important; }
+        .carousel-web-card:hover { transform: translateY(-6px) !important; box-shadow: 0 20px 40px rgba(0,0,0,0.06) !important; }
+        .web-card-frame { width: 100% !important; height: 280px !important; background: #eae8e3 !important; overflow: hidden !important; border-bottom: 1px solid rgba(0,0,0,0.03) !important; }
+        .web-card-frame img { width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: top center !important; }
+        .web-card-footer { padding: 18px 20px !important; background: #faf9f6 !important; display: flex !important; justify-content: space-between !important; align-items: center !important; transition: background-color 0.4s ease !important; }
+        .web-card-footer h4 { margin: 0 !important; font-size: 14px !important; font-weight: 600 !important; color: #1e1e1e !important; transition: color 0.4s ease !important; }
+        .web-card-footer span { font-size: 11px !important; font-family: monospace !important; color: #666660 !important; background: #eae7e1 !important; padding: 2px 8px !important; border-radius: 4px !important; transition: background-color 0.4s ease, color 0.4s ease !important; }
+
+        .carousel-controls-container { display: flex !important; justify-content: space-between !important; align-items: center !important; margin-top: 20px !important; padding: 0 5px !important; }
+        .carousel-play-btn { width: 36px !important; height: 36px !important; border-radius: 50% !important; border: 1px solid rgba(30,30,30,0.15) !important; background: #faf9f6 !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important; font-size: 12px !important; color: #1e1e1e !important; transition: all 0.2s ease !important; }
+        .carousel-play-btn:hover { background: #1e1e1e !important; color: #f3f0eb !important; border-color: #1e1e1e !important; }
+        .carousel-dots-indicator { display: flex !important; align-items: center !important; gap: 6px !important; }
+        .c-dot { width: 5px !important; height: 5px !important; background: rgba(30,30,30,0.2) !important; border-radius: 50% !important; transition: all 0.3s ease !important; }
+        .c-dot.active-dot { width: 18px !important; border-radius: 4px !important; background: #1e1e1e !important; }
+        .carousel-view-all { font-size: 12px !important; font-weight: 700 !important; text-transform: uppercase !important; letter-spacing: 0.5px !important; color: #1e1e1e !important; text-decoration: none !important; border-bottom: 1px solid #1e1e1e !important; padding-bottom: 2px !important; transition: color 0.4s ease, border-color 0.4s ease !important; }
+
+        /* 3D & GRAPHICS GRID */
+        .squarespace-feature-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 20px !important; width: 100% !important; }
+        @media (max-width: 1200px) { .squarespace-feature-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 680px) { .squarespace-feature-grid { grid-template-columns: 1fr !important; } }
+
+        .feature-premium-card { position: relative !important; border-radius: 14px !important; padding: 30px 24px 70px 24px !important; display: flex !important; flex-direction: column !important; overflow: hidden !important; border: 1px solid rgba(255, 255, 255, 0.04) !important; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important; transition: transform 0.3s cubic-bezier(0.2, 1, 0.2, 1) !important; }
+        .graphic-carousel-card { flex: 0 0 340px !important; max-width: 80vw !important; scroll-snap-align: start !important; }
+        .feature-premium-card:hover { transform: translateY(-5px) !important; }
+
+        .card-bg-gradient-1 { background: linear-gradient(185deg, #464240 0%, #2b2827 100%) !important; }
+        .card-bg-gradient-2 { background: linear-gradient(185deg, #241411 0%, #170c0a 100%) !important; }
+        .card-bg-gradient-3 { background: linear-gradient(185deg, #443c35 0%, #292420 100%) !important; }
+        .card-bg-gradient-4 { background: linear-gradient(185deg, #232526 0%, #111314 100%) !important; }
+
+        .feature-premium-card h3 { color: #ffffff !important; font-size: 20px !important; font-weight: 600 !important; margin: 0 0 10px 0 !important; letter-spacing: -0.5px !important; }
+        .feature-premium-card p { color: rgba(255, 255, 255, 0.65) !important; font-size: 13px !important; line-height: 1.5 !important; margin: 0 0 35px 0 !important; }
+        .feature-img-centerpiece { width: 100% !important; height: 190px !important; display: flex !important; align-items: center !important; justify-content: center !important; margin-top: auto !important; position: relative !important; }
+        .feature-img-centerpiece img { max-width: 85% !important; max-height: 100% !important; object-fit: contain !important; border-radius: 8px !important; filter: drop-shadow(0 15px 25px rgba(0,0,0,0.5)) !important; transition: transform 0.4s ease !important; }
+        .feature-premium-card:hover .feature-img-centerpiece img { transform: scale(1.05) !important; }
+        .feature-arrow-btn { position: absolute !important; bottom: 25px !important; right: 25px !important; color: rgba(255, 255, 255, 0.8) !important; font-size: 15px !important; transition: all 0.2s ease !important; }
+        .feature-premium-card:hover .feature-arrow-btn { transform: translateX(4px) !important; color: #ffffff !important; }
+
+        /* PHOTOGRAPHY GRID */
+        .photo-premium-grid { display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 15px !important; margin-bottom: 40px !important; }
+        @media (max-width: 991px) { .photo-premium-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+        @media (max-width: 575px) { .photo-premium-grid { grid-template-columns: 1fr !important; } }
+        .photo-item { height: 380px !important; border-radius: 12px !important; overflow: hidden !important; border: 1px solid rgba(0,0,0,0.04) !important; }
+        .photo-item img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+
+        /* ==========================================================================
+           🆕 EXTRA LATEST UPGRADES (MARQUEE & FAQ ACCORDION)
+           ========================================================================== */
+        /* INFINITE MARQUEE TICKER */
+        .premium-marquee-container {
+            width: 100vw !important; margin-left: calc(-50vw + 50%) !important;
+            background: #1e1e1e !important; color: #f3f0eb !important;
+            padding: 18px 0 !important; overflow: hidden !important;
+            display: flex !important; margin-top: 60px !important; margin-bottom: 60px !important;
+            transition: background-color 0.4s ease, color 0.4s ease !important;
+        }
+        .marquee-track {
+            display: flex !important; white-space: nowrap !important;
+            animation: marqueeRun 25s linear infinite !important;
+        }
+        .marquee-track span {
+            font-size: 14px !important; font-weight: 700 !important;
+            text-transform: uppercase !important; letter-spacing: 2px !important;
+            padding: 0 40px !important; font-family: monospace !important;
+        }
+        @keyframes marqueeRun {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* MINI ACCORDION FAQ BLOCK */
+        .faq-editorial-section {
+            margin-top: 80px !important; padding-top: 40px !important;
+            border-top: 1px solid rgba(30, 30, 30, 0.1) !important;
+        }
+        .faq-item {
+            border-bottom: 1px solid rgba(30, 30, 30, 0.1) !important; padding: 20px 0 !important;
+        }
+        .faq-trigger {
+            display: flex !important; justify-content: space-between !important;
+            align-items: center !important; width: 100% !important; background: none !important;
+            border: none !important; padding: 0 !important; text-align: left !important;
+            font-size: 16px !important; font-weight: 700 !important; color: #1e1e1e !important;
+            cursor: pointer !important; text-transform: uppercase !important;
+        }
+        .faq-content {
+            max-height: 0 !important; overflow: hidden !important;
+            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1) !important;
+        }
+        .faq-content p {
+            padding-top: 15px !important; margin: 0 !important;
+            font-size: 14px !important; line-height: 1.6 !important; color: #555550 !important;
+        }
+        .faq-item.active .faq-content {
+            max-height: 200px !important; transition: max-height 0.3s cubic-bezier(1, 0, 1, 0) !important;
+        }
+        .faq-icon { transition: transform 0.3s ease !important; }
+        .faq-item.active .faq-icon { transform: rotate(45deg) !important; }
+
+        /* EDITORIAL COLLABORATION FOOTER BLOCK */
+        .editorial-cta-block { border-top: 1px solid #1e1e1e !important; padding: 80px 0 30px 0 !important; margin-top: 80px !important; display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 50px !important; transition: border-color 0.4s ease !important; }
+        @media (max-width: 768px) { .editorial-cta-block { grid-template-columns: 1fr !important; gap: 30px !important; padding: 50px 0 20px 0 !important; } }
+        
+        .cta-left-statement h3 { font-size: clamp(28px, 4vw, 42px) !important; font-weight: 800 !important; text-transform: uppercase !important; line-height: 1.1 !important; margin: 0 0 20px 0 !important; letter-spacing: -1px !important; }
+        .cta-big-link { display: inline-flex !important; align-items: center !important; gap: 15px !important; font-size: 16px !important; font-weight: 700 !important; text-transform: uppercase !important; color: #1e1e1e !important; text-decoration: none !important; border: 1px solid #1e1e1e !important; padding: 14px 32px !important; border-radius: 50px !important; transition: all 0.3s ease !important; }
+        .cta-big-link:hover { background: #1e1e1e !important; color: #f3f0eb !important; transform: translateY(-3px) !important; }
+
+        /* 🎨 TUKAR: Warna container status disesuaikan supaya sepadan dengan sand bg */
+        .cta-right-status { display: flex !important; flex-direction: column !important; justify-content: space-between !important; background: rgba(30,30,30,0.03) !important; border: 1px solid rgba(30,30,30,0.06) !important; padding: 30px !important; border-radius: 14px !important; transition: background-color 0.4s ease, border-color 0.4s ease !important; }
+        .status-badge { display: inline-flex !important; align-items: center !important; gap: 8px !important; font-family: monospace !important; font-size: 11px !important; text-transform: uppercase !important; font-weight: bold !important; color: #1b5e20 !important; margin-bottom: 15px !important; }
+        .status-badge::before { content: "" !important; width: 8px !important; height: 8px !important; background: #2e7d32 !important; border-radius: 50% !important; display: inline-block !important; box-shadow: 0 0 8px #4caf50 !important; }
+        .cta-right-status p { font-size: 14px !important; line-height: 1.6 !important; color: #3a3a35 !important; margin: 0 0 20px 0 !important; transition: color 0.4s ease !important; }
+        
+        /* FOOTER BRANDING WITH SOCIALS & DYNAMIC CLOCK */
+        .journal-footer { border-top: 1px solid rgba(30,30,30,0.1) !important; padding: 40px 0 !important; margin-top: 40px !important; display: flex !important; justify-content: space-between !important; align-items: center !important; flex-wrap: wrap !important; gap: 20px !important; font-family: monospace !important; font-size: 12px !important; color: #555550 !important; transition: color 0.4s ease, border-color 0.4s ease !important; }
+        .footer-socials { display: flex !important; gap: 18px !important; }
+        .footer-socials a { color: #1e1e1e !important; font-size: 15px !important; transition: transform 0.2s ease, color 0.2s ease !important; }
+        .footer-socials a:hover { color: #7a7a75 !important; transform: scale(1.1) !important; }
+        .live-clock-badge { font-weight: bold !important; color: #1e1e1e !important; transition: color 0.4s ease !important; }
+
+        /* FLOATING BACK TO TOP BUTTON */
+        .back-to-top { position: fixed !important; bottom: 30px !important; right: 30px !important; width: 45px !important; height: 45px !important; background-color: #1e1e1e !important; color: #f3f0eb !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; text-decoration: none !important; font-size: 14px !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; box-shadow: 0 4px 15px rgba(0,0,0,0.15) !important; z-index: 999 !important; transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important; }
+        .back-to-top.show-btn { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; }
+        .back-to-top:hover { transform: translateY(-4px) !important; background-color: #444440 !important; }
+
+        /* ==========================================================================
+           🌓 DETAILED DARK MODE TARGETS (KEKAL KAN DARK MODE ORIGINAL YANG LAWA)
+           ========================================================================== */
+        body.dark-theme { background-color: #0e0e0e !important; color: #f5f5f5 !important; }
+        body.dark-theme .navbar { background-color: #0e0e0e !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
+        body.dark-theme .creative-hero-split,
+        body.dark-theme .editorial-cta-block { border-bottom-color: #ffffff !important; border-top-color: #ffffff !important; }
+        body.dark-theme .hero-right-desc p,
+        body.dark-theme .journal-section-desc,
+        body.dark-theme .cta-right-status p,
+        body.dark-theme .faq-content p { color: #aaaaaa !important; }
+        body.dark-theme .journal-btn { color: #ffffff !important; border-color: #ffffff !important; }
+        body.dark-theme .journal-btn:hover { background: #ffffff !important; color: #111111 !important; }
+        body.dark-theme .journal-tag { background: #ffffff !important; color: #111111 !important; }
+        body.dark-theme .project-metadata-grid { border-top-color: rgba(255,255,255,0.1) !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
+        body.dark-theme .meta-value, body.dark-theme .faq-trigger, body.dark-theme .live-clock-badge { color: #ffffff !important; }
+        body.dark-theme .carousel-web-card { background: #161616 !important; border-color: rgba(255,255,255,0.05) !important; }
+        body.dark-theme .web-card-footer { background: #161616 !important; }
+        body.dark-theme .web-card-footer h4 { color: #ffffff !important; }
+        body.dark-theme .web-card-footer span { background: #262624 !important; color: #aaaaaa !important; }
+        body.dark-theme .carousel-play-btn { background: #161616 !important; color: #ffffff !important; border-color: rgba(255,255,255,0.2) !important; }
+        body.dark-theme .carousel-play-btn:hover { background: #ffffff !important; color: #111111 !important; }
+        body.dark-theme .c-dot { background: rgba(255,255,255,0.2) !important; }
+        body.dark-theme .c-dot.active-dot { background: #ffffff !important; }
+        body.dark-theme .carousel-view-all { color: #ffffff !important; border-bottom-color: #ffffff !important; }
+        body.dark-theme .section-label-divider { color: #666666 !important; }
+        body.dark-theme .faq-editorial-section, body.dark-theme .faq-item { border-top-color: rgba(255,255,255,0.1) !important; border-bottom-color: rgba(255,255,255,0.1) !important; }
+        body.dark-theme .premium-marquee-container { background: #ffffff !important; color: #111111 !important; }
+        body.dark-theme .editorial-cta-block { border-top-color: rgba(255,255,255,0.2) !important; }
+        body.dark-theme .cta-big-link { color: #ffffff !important; border-color: #ffffff !important; }
+        body.dark-theme .cta-big-link:hover { background: #ffffff !important; color: #111111 !important; }
+        body.dark-theme .cta-right-status { background: rgba(255,255,255,0.02) !important; border-color: rgba(255,255,255,0.08) !important; }
+        body.dark-theme .status-badge { color: #81c784 !important; }
+        body.dark-theme .journal-footer { border-top-color: rgba(255,255,255,0.1) !important; color: #888888 !important; }
+        body.dark-theme .footer-socials a { color: #ffffff !important; }
+        body.dark-theme .footer-socials a:hover { color: #aaaaaa !important; }
+        body.dark-theme .back-to-top { background-color: #ffffff !important; color: #111111 !important; }
+        body.dark-theme .back-to-top:hover { background-color: #cccccc !important; }
+    </style>
 </head>
-<body class="moy-body-clean">
+<body class="editorial-blog-body">
+
+    <!-- FLOATING BACK TO TOP BUTTON -->
+    <a href="#" id="scrollTopBtn" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
     <!-- NAVIGATION BAR -->
     <nav class="navbar">
-        <div class="logo">PORTFOLIO.©2026</div>
+        <div class="logo"><b>MZN.STUDIO©2026</b></div>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
@@ -21,238 +361,312 @@
         <button id="theme-toggle" class="toggle-btn"><i class="fas fa-moon"></i></button>
     </nav>
 
-    <!-- COLIN MOY HEADER TEXT WITH SWITCH -->
-    <header class="moy-main-header">
-        <h1 class="moy-huge-title">
-            PORTF<span class="moy-pill-switch"><span class="moy-switch-circle"></span></span>LIO
-        </h1>
-    </header>
-
-    <!-- HORIZONTAL OVAL SCROLLING GRID (6 KATEGORI PROJEK) -->
-    <main class="moy-horizontal-scroll-container">
+    <div class="master-journal-container">
         
-        <!-- KAD 1: WEB AND APPS -->
-        <a href="#web-apps" class="moy-oval-card">
-            <div class="card-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80');"></div>
-            <div class="card-info-layer">
-                <h3>WEB &<br>APPS</h3>
-                <span class="sub-tag">01 // UI.UX DEVELOPMENT</span>
+        <!-- HERO INTRO -->
+        <header class="creative-hero-split">
+            <div class="hero-left-title">
+                <h1>The Inside<span>Journal & Process.</span></h1>
             </div>
-        </a>
-
-        <!-- KAD 2: 3D MODELLING AND ANIMATION -->
-        <a href="#3d-modelling-animation" class="moy-oval-card">
-            <div class="card-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80');"></div>
-            <div class="card-info-layer">
-                <h3>3D MODELLING<br>& ANIMATION</h3>
-                <span class="sub-tag">02 // MODELING.ANIMATION</span>
+            <div class="hero-right-desc">
+                <p>A comprehensive multimedia design archive showcasing the production integration between responsive web application systems, interactive 3D asset modeling environments, and compiled brand graphic identities.</p>
             </div>
-        </a>
+        </header>
 
-        <!-- KAD 3: AR AND VR -->
-        <a href="#ar-vr" class="moy-oval-card">
-            <div class="card-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=600&q=80');"></div>
-            <div class="card-info-layer">
-                <h3>AR &<br>VR</h3>
-                <span class="sub-tag">03 // IMMERSIVE MEDIA</span>
+        <!-- CATEGORY NAVIGATION -->
+        <div class="journal-filter-bar">
+            <a href="#web-section" class="journal-btn">01 // UI & Web</a>
+            <a href="#3d-section" class="journal-btn">02 // 3D Workshop</a>
+            <a href="#graphic-section" class="journal-btn">03 // Graphics</a>
+            <a href="#photo-section" class="journal-btn">04 // Frames</a>
+        </div>
+
+
+        <!-- 💻 SEKSYEN 1: UI & WEB -->
+        <section id="web-section" class="journal-section">
+            <div class="journal-header">
+                <h2 class="journal-title">01 / User Interface & Web Application</h2>
+                <div class="journal-tag">SYS_DEV</div>
             </div>
-        </a>
-
-        <!-- KAD 4: GRAPHIC DESIGN -->
-        <a href="#graphic-design" class="moy-oval-card">
-            <div class="card-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80');"></div>
-            <div class="card-info-layer">
-                <h3>GRAPHIC<br>DESIGN</h3>
-                <span class="sub-tag">04 // BRANDING.VISUAL</span>
+            <div class="project-metadata-grid">
+                <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Lead UI/UX & Frontend Developer</span></div>
+                <div class="meta-item"><span class="meta-label">Timeline</span><span class="meta-value">4 Weeks (May 2026)</span></div>
+                <div class="meta-item"><span class="meta-label">Tools</span><span class="meta-value">Figma, VS Code, HTML5, Premium CSS</span></div>
+                <div class="meta-item"><span class="meta-label">Project Type</span><span class="meta-value">CatCare Boarding Ecosystem</span></div>
             </div>
-        </a>
+            <p class="journal-section-desc"><strong>Objective:</strong> To overhaul an outdated pet-boarding management interface into a responsive, high-fidelity customer booking portal. This design system prioritizes structured pricing tiers, fluid user authentication paths, and intuitive system dashboard grids to minimize dropout rates during checkout workflows.</p>
 
-        <!-- KAD 5: GAMES DEVELOPMENT -->
-        <a href="#games-dev" class="moy-oval-card">
-            <div class="card-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=600&q=80');"></div>
-            <div class="card-info-layer">
-                <h3>GAMES<br>DEVELOPMENT</h3>
-                <span class="sub-tag">05 // INTERACTIVE ENGINE</span>
-            </div>
-        </a>
-
-        <!-- KAD 6: PHOTOGRAPHY & VIDEOGRAPHY -->
-        <a href="#photo-video" class="moy-oval-card">
-            <div class="card-image-overlay" style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80');"></div>
-            <div class="card-info-layer">
-                <h3>PHOTO &<br>VIDEO</h3>
-                <span class="sub-tag">06 // LENS.PRODUCTION</span>
-            </div>
-        </a>
-
-    </main>
-
-    <!-- SECTION KANDUNGAN BAWAH (IKUT TEMA KONSEPTUAL ASAL + SUSUNAN IMAGE_5A9A1F.JPG) -->
-    <section class="container project-detail-section">
-        
-        <!-- DETAIL 1: WEB AND APPS -->
-        <div id="web-apps" class="moy-showcase-wrapper">
-            <div class="moy-showcase-header">
-                <span class="detail-num">01 // WEB AND APPS</span>
-                <h2 class="moy-showcase-title">User Interface & Web Application</h2>
-                <p class="detail-desc">A collection of responsive web designs and mobile application interfaces. Focused on user experience (UX) research, clean front-end code implementation, and interactive layout scalability.</p>
-                <div class="moy-showcase-line"></div>
-            </div>
-
-            <!-- SUSUNAN KEDUDUKAN GAMBAR PROJEK UTAMA (MASUKKAN GAMBAR SENDIRI DI SINI) -->
-            <div class="moy-cloud-container">
-                <!-- Baris Atas (3 Gambar Terapung) -->
-                <div class="moy-cloud-row">
-                    <div class="moy-mini-card"><img src="images/catcare-packages.png" alt="Packages Page"></div>
-                    <div class="moy-mini-card"><img src="images/catcare-solutions.png" alt="Solutions Page"></div>
-                    <div class="moy-mini-card"><img src="images/catcare-admin.png" alt="Admin Welcome"></div>
-                </div>
-
-                <!-- Baris Tengah (Sisi Kiri, Laptop Utama di Tengah, Sisi Kanan) -->
-                <div class="moy-cloud-row">
-                    <div class="moy-mini-card moy-tilt-left"><img src="images/catcare-login.png" alt="Login Portal"></div>
-                    
-                    <!-- LAPTOP FRAME MINIMALIS (SKRIN PROJEK UTAMA) -->
-                    <div class="moy-laptop-frame">
-                        <div class="moy-laptop-screen">
-                            <img src="images/catcare-home.png" alt="CatCare Hub Main Site">
-                        </div>
-                        <div class="moy-laptop-base"></div>
+            <div class="carousel-outer-wrapper">
+                <div class="premium-carousel-track" id="catcare-track">
+                    <div class="carousel-web-card">
+                        <div class="web-card-frame"><img src="images/catcare-home.png" alt="Home Dashboard"></div>
+                        <div class="web-card-footer"><h4>CatCare Core Dashboard UI</h4><span>MZN_01</span></div>
                     </div>
-
-                    <div class="moy-mini-card moy-tilt-right"><img src="images/catcare-profile.png" alt="Profile Update"></div>
+                    <div class="carousel-web-card">
+                        <div class="web-card-frame"><img src="images/catcare-packages.png" alt="Packages UI"></div>
+                        <div class="web-card-footer"><h4>Service Pricing & Packages</h4><span>MZN_02</span></div>
+                    </div>
+                    <div class="carousel-web-card">
+                        <div class="web-card-frame"><img src="images/catcare-solutions.png" alt="Solutions Screen"></div>
+                        <div class="web-card-footer"><h4>Integrated Boarding Solutions</h4><span>MZN_03</span></div>
+                    </div>
+                    <div class="carousel-web-card">
+                        <div class="web-card-frame"><img src="images/catcare-admin.png" alt="Admin Controls"></div>
+                        <div class="web-card-footer"><h4>Backend Operations & Admin Panel</h4><span>MZN_04</span></div>
+                    </div>
+                    <div class="carousel-web-card">
+                        <div class="web-card-frame"><img src="images/catcare-login.png" alt="Secure Gateway"></div>
+                        <div class="web-card-footer"><h4>Gateway Authentication Screen</h4><span>MZN_05</span></div>
+                    </div>
+                    <div class="carousel-web-card">
+                        <div class="web-card-frame"><img src="images/catcare-profile.png" alt="User Data Profile"></div>
+                        <div class="web-card-footer"><h4>Customer Metrics & Account Profile</h4><span>MZN_06</span></div>
+                    </div>
+                    <div class="carousel-web-card">
+                        <div class="web-card-frame"><img src="images/catcare-explainer.png" alt="System Flow"></div>
+                        <div class="web-card-footer"><h4>Explainer Vector & Flow Interface</h4><span>MZN_07</span></div>
+                    </div>
                 </div>
-
-                <!-- Baris Bawah (2 Gambar) -->
-                <div class="moy-cloud-row">
-                    <div class="moy-mini-card"><img src="images/catcare-home.png" alt="Mobile View"></div>
-                    <div class="moy-mini-card"><img src="images/catcare-explainer.png" alt="Admin Panel Explainer"></div>
+                <div class="carousel-controls-container">
+                    <div class="carousel-play-btn" onclick="document.getElementById('catcare-track').scrollBy({left: -300, behavior: 'smooth'});"><i class="fas fa-chevron-left"></i></div>
+                    <div class="carousel-dots-indicator" id="catcare-dots">
+                        <div class="c-dot active-dot"></div><div class="c-dot"></div><div class="c-dot"></div><div class="c-dot"></div>
+                    </div>
+                    <a href="#3d-section" class="carousel-view-all">View Prototype</a>
                 </div>
+            </div>
+        </section>
+
+
+        <!-- 🛠️ SEKSYEN 2: 3D WORKSHOP -->
+        <section id="3d-section" class="journal-section">
+            <div class="journal-header">
+                <h2 class="journal-title">02 / 3D Workshop Environment</h2>
+                <div class="journal-tag">3D_MESH</div>
+            </div>
+            <div class="project-metadata-grid">
+                <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">3D Asset Modeler / Texture Artist</span></div>
+                <div class="meta-item"><span class="meta-label">Timeline</span><span class="meta-value">3 Weeks (April 2026)</span></div>
+                <div class="meta-item"><span class="meta-label">Tools</span><span class="meta-value">Blender, Cycles Render Engine</span></div>
+                <div class="meta-item"><span class="meta-label">Focus Area</span><span class="meta-value">Hard Surface PBR Topology</span></div>
+            </div>
+            <p class="journal-section-desc"><strong>Objective:</strong> Virtual space exploration detailing low-poly and high-poly hard-surface industrial assets. The focus centers heavily on optimal polygon budget containment, customized non-destructive modifier configurations, and procedural material roughness mapping to emulate lifelike factory conditions.</p>
+            
+            <span class="section-label-divider">// Environmental Scenery Assets</span>
+            <div class="squarespace-feature-grid">
+                <div class="feature-premium-card card-bg-gradient-1">
+                    <h3>Workshop Stage</h3><p>Foundational structural mesh blocking using regional architectural metrics and global coordinate planes.</p>
+                    <div class="feature-img-centerpiece"><img src="images/workshop-1.png" alt="S1"></div><div class="feature-arrow-btn"><i class="fas fa-arrow-right"></i></div>
+                </div>
+                <div class="feature-premium-card card-bg-gradient-2">
+                    <h3>Render Corner</h3><p>Close-up baking evaluation of ambient occlusion, contact ray shadows, and multi-layered concrete floor materials.</p>
+                    <div class="feature-img-centerpiece"><img src="images/workshop-2.png" alt="S2"></div><div class="feature-arrow-btn"><i class="fas fa-arrow-right"></i></div>
+                </div>
+                <div class="feature-premium-card card-bg-gradient-3">
+                    <h3>Lighting Setup</h3><p>Volumetric environment fog combined with a high-intensity directional sun node to execute mood-driven lighting panels.</p>
+                    <div class="feature-img-centerpiece"><img src="images/workshop-3.png" alt="S3"></div><div class="feature-arrow-btn"><i class="fas fa-arrow-right"></i></div>
+                </div>
+                <div class="feature-premium-card card-bg-gradient-4">
+                    <h3>Final Composite</h3><p>Assembling industrial beams, metallic assets, and custom camera composition focal lengths for production sign-off.</p>
+                    <div class="feature-img-centerpiece"><img src="images/workshop-4.png" alt="S4"></div><div class="feature-arrow-btn"><i class="fas fa-arrow-right"></i></div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 🎨 SEKSYEN 3: GRAPHIC GALLERY -->
+        <section id="graphic-section" class="journal-section">
+            <div class="journal-header">
+                <h2 class="journal-title">03 / Brand Identity & Visual Graphics</h2>
+                <div class="journal-tag">GRA_DSGN</div>
+            </div>
+            <div class="project-metadata-grid">
+                <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Graphic Designer / Brand Strategist</span></div>
+                <div class="meta-item"><span class="meta-label">Timeline</span><span class="meta-value">2 Weeks (March 2026)</span></div>
+                <div class="meta-item"><span class="meta-label">Tools</span><span class="meta-value">Adobe Illustrator, Photoshop</span></div>
+                <div class="meta-item"><span class="meta-label">Client Focus</span><span class="meta-value">Jero Fried Chicken Franchise</span></div>
+            </div>
+            <p class="journal-section-desc"><strong>Objective:</strong> To devise a scalable visual marketing toolkit for a fast-casual food franchise. Deliverables include optimized menu grids, large-format event display banners, and curated social media advertising guidelines designed to establish immediate market authority.</p>
+            
+            <div class="carousel-outer-wrapper">
+                <div class="premium-carousel-track" id="graphic-track">
+                    <div class="feature-premium-card graphic-carousel-card card-bg-gradient-1">
+                        <h3>Jero Fried Chicken Menu</h3><p>Structured print design showcasing distinct product categorization, pricing taxonomy, and high-contrast color blocks.</p>
+                        <div class="feature-img-centerpiece"><img src="images/graphic-1.png" alt="G1"></div><div class="feature-arrow-btn"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <div class="feature-premium-card graphic-carousel-card card-bg-gradient-2">
+                        <h3>Nasi Lemak Menu</h3><p>An editorial asset balancing localized culinary vectors with contemporary typography alignments.</p>
+                        <div class="feature-img-centerpiece"><img src="images/graphic-2.png" alt="G2"></div><div class="feature-arrow-btn"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <div class="feature-premium-card graphic-carousel-card card-bg-gradient-3">
+                        <h3>Crispy Chicken Wing Banner</h3><p>A wide billboard design utilizing dramatic lighting adjustments to emphasize food texture and freshness.</p>
+                        <div class="feature-img-centerpiece"><img src="images/graphic-3.png" alt="G3"></div><div class="feature-arrow-btn"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <div class="feature-premium-card graphic-carousel-card card-bg-gradient-4">
+                        <h3>Nasi Lemak Banner</h3><p>Large commercial print file focusing on saturated warm tones and sharp product masks for store display boards.</p>
+                        <div class="feature-img-centerpiece"><img src="images/graphic-4.png" alt="G4"></div><div class="feature-arrow-btn"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+                <div class="carousel-controls-container">
+                    <div class="carousel-play-btn" onclick="document.getElementById('graphic-track').scrollBy({left: -300, behavior: 'smooth'});"><i class="fas fa-chevron-left"></i></div>
+                    <div class="carousel-dots-indicator" id="graphic-dots">
+                        <div class="c-dot active-dot"></div><div class="c-dot"></div><div class="c-dot"></div><div class="c-dot"></div>
+                    </div>
+                    <div class="carousel-play-btn" onclick="document.getElementById('graphic-track').scrollBy({left: 300, behavior: 'smooth'});"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 📸 SEKSYEN 4: PHOTOGRAPHY -->
+        <section id="photo-section" class="journal-section">
+            <div class="journal-header">
+                <h2 class="journal-title">04 / Capture Frames</h2>
+                <div class="journal-tag">RAW_IMG</div>
+            </div>
+            <p class="journal-section-desc">A cinematic collection of unedited raw frames capturing contrasting geometric architecture, deep shadows, and urban textures.</p>
+            <div class="photo-premium-grid">
+                <div class="photo-item"><img src="images/photography-1.jpg" alt="P1"></div>
+                <div class="photo-item"><img src="images/photography-2.jpg" alt="P2"></div>
+                <div class="photo-item"><img src="images/photography-3.jpg" alt="P3"></div>
+                <div class="photo-item"><img src="images/photography-4.jpg" alt="P4"></div>
+            </div>
+        </section>
+
+
+        <!-- RUNNING MARQUEE TICKER BANNER -->
+        <div class="premium-marquee-container">
+            <div class="marquee-track">
+                <span>• Open For Commissions 2026</span>
+                <span>• Pure HTML & Premium CSS Architecture</span>
+                <span>• Interactive Design System Artifacts</span>
+                <span>• Available For Freelance Global Projects</span>
+                <span>• Open For Commissions 2026</span>
+                <span>• Pure HTML & Premium CSS Architecture</span>
+                <span>• Interactive Design System Artifacts</span>
+                <span>• Available For Freelance Global Projects</span>
             </div>
         </div>
 
-        <!-- DETAIL 2: 3D MODELLING AND ANIMATION -->
-<div id="3d-modelling-animation" class="moy-showcase-wrapper">
-    <div class="moy-showcase-header">
-        <span class="detail-num">02 // 3D MODELLING AND ANIMATION</span>
-        <h2 class="moy-showcase-title">3D Woodworking Workshop & Asset Modeling</h2>
-        <p class="detail-desc">A detailed interior environment of a traditional woodworking workshop. Features custom-modeled hand tools, optimized polygon structures, realistic wood texturing, and atmospheric interior lighting setups.</p>
-        <div class="moy-showcase-line"></div>
+
+        <!-- INTERACTIVE FAQ MINI ACCORDION SECTION -->
+        <section class="faq-editorial-section">
+            <div class="journal-header">
+                <h2 class="journal-title">Frequently Asked Inquiries</h2>
+                <div class="journal-tag">FAQ_DOCS</div>
+            </div>
+            <p class="journal-section-desc">Quick structured responses regarding operational design pipelines and framework handoffs.</p>
+            
+            <div class="faq-item">
+                <button class="faq-trigger" onclick="toggleFaq(this)">Are the 3D assets optimized for game-ready development? <i class="fas fa-plus faq-icon"></i></button>
+                <div class="faq-content"><p>Yes. All modeling workshops inside this archive strictly maintain structured polygon hierarchies, minimal vertex stretching, and standard baked PBR maps suited for WebGL applications or game engines.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-trigger" onclick="toggleFaq(this)">What frameworks are used for design system integration? <i class="fas fa-plus faq-icon"></i></button>
+                <div class="faq-content"><p>This project is executed entirely via pure vanilla HTML5 structure, modular CSS variables, and modern responsive UI layout grids to guarantee fast browser rendering times and seamless cross-device compatibility.</p></div>
+            </div>
+        </section>
+
+
+        <!-- EDITORIAL COLLABORATION BLOCK -->
+        <section class="editorial-cta-block">
+            <div class="cta-left-statement">
+                <h3>Have an interesting project in mind?</h3>
+                <p style="font-size:15px; line-height:1.6; margin-bottom:30px; opacity:0.8;">Let's build meaningful digital platforms, interactive interfaces, or compelling branding directions together.</p>
+                <a href="contact.html" class="cta-big-link">Get In Touch <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="cta-right-status">
+                <div>
+                    <div class="status-badge">Current Availability Status</div>
+                    <p>Open for selected freelance opportunities, UI/UX asset builds, and framework architecture consultation commissions.</p>
+                </div>
+                <div style="font-family: monospace; font-size: 11px; opacity: 0.6; border-top:1px solid rgba(30,30,30,0.1); padding-top:15px;">
+                    LAST UPDATED: JUNE 2026
+                </div>
+            </div>
+        </section>
+
+
+        <!-- FOOTER WITH SOCIAL LINKS & DYNAMIC LIVE CLOCK -->
+        <footer class="journal-footer">
+            <div>MZN.STUDIO // ARTIFACTS 2026</div>
+            <div>KUALA LUMPUR, MY // <span id="liveClock" class="live-clock-badge">00:00:00 AM</span></div>
+            <div class="footer-socials">
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://behance.net" target="_blank"><i class="fab fa-behance"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div>FIK UNISZA // CSD34203_PROJECT</div>
+        </footer>
+
     </div>
-    
-    <div class="moy-cloud-container">
-        <!-- 1. PAPARAN UTAMA (6 GAMBAR ENVIRONMENT BENZEL) -->
-        <h3 class="section-sub-title"><i class="fas fa-cubes"></i> Workshop Environment Scenery</h3>
-        <div class="workshop-scenery-grid">
-            <div class="scenery-card"><img src="images/workshop-1.png" alt="Workshop Corner View"></div>
-            <div class="scenery-card"><img src="images/workshop-2.png" alt="Workbench Focus"></div>
-            <div class="scenery-card"><img src="images/workshop-3.png" alt="Wide Interior View"></div>
-            <div class="scenery-card"><img src="images/workshop-4.png" alt="Shelving & Lighting Detail"></div>
-            <div class="scenery-card"><img src="images/workshop-5.png" alt="Tool Rack Display"></div>
-            <div class="scenery-card"><img src="images/workshop-6.png" alt="Stool Close-up"></div>
-        </div>
 
-        <!-- 2. PAPARAN ALATAN (6 GAMBAR PROPS/TOOLS DI BAWAH) -->
-        <h3 class="section-sub-title"><i class="fas fa-tools"></i> Modeled Props & Hand Tools</h3>
-        <div class="tools-showcase-row">
-            <div class="tool-vertical-card"><img src="images/tool-1.png" alt="Chisel Tool"></div>
-            <div class="tool-vertical-card"><img src="images/tool-2.png" alt="Axe Tool"></div>
-            <div class="tool-vertical-card"><img src="images/tool-3.png" alt="Claw Hammer"></div>
-            <div class="tool-vertical-card"><img src="images/tool-4.png" alt="Mallet Hammer"></div>
-            <div class="tool-vertical-card"><img src="images/tool-5.png" alt="Hand Saw"></div>
-            <div class="tool-vertical-card"><img src="images/tool-6.png" alt="Tenon Saw"></div>
-        </div>
-    </div>
-</div>
+    <!-- SCRIPT UTILITY -->
+    <script>
+        // 1. CAROUSEL SLIDER MECHANISM
+        function setupCarousel(trackId, dotsId) {
+            const track = document.getElementById(trackId);
+            const dots = document.querySelectorAll(`#${dotsId} .c-dot`);
+            if(!track || dots.length === 0) return;
+            track.addEventListener('scroll', () => {
+                const scrollRatio = track.scrollLeft / (track.scrollWidth - track.clientWidth);
+                const activeIndex = Math.min(Math.floor(scrollRatio * dots.length), dots.length - 1);
+                dots.forEach((dot, index) => {
+                    if(index === activeIndex) dot.classList.add('active-dot');
+                    else dot.classList.remove('active-dot');
+                });
+            });
+        }
+        setupCarousel('catcare-track', 'catcare-dots');
+        setupCarousel('graphic-track', 'graphic-dots');
 
-        <!-- DETAIL 3: AR AND VR -->
-        <div id="ar-vr" class="moy-showcase-wrapper">
-            <div class="moy-showcase-header">
-                <span class="detail-num">03 // AR AND VR</span>
-                <h2 class="moy-showcase-title">Augmented Reality & Virtual Reality Experiences</h2>
-                <p class="detail-desc">Immersive media applications designed to bridge the physical and digital worlds. Features interactive target-tracking AR filters, virtual environment simulations, and spatial UI experiments.</p>
-                <div class="moy-showcase-line"></div>
-            </div>
-            <div class="moy-cloud-container">
-                <div class="moy-cloud-row">
-                    <div class="moy-laptop-frame">
-                        <div class="moy-laptop-screen">
-                            <img src="images/arvr-project.png" alt="ARVR Showcase">
-                        </div>
-                        <div class="moy-laptop-base"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        // 2. FIXED THEME TOGGLE (DARK MODE)
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const icon = themeToggleBtn.querySelector('i');
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-theme');
+            icon.classList.replace('fa-moon', 'fa-sun');
+        }
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
 
-        <!-- DETAIL 4: GRAPHIC DESIGN -->
-        <div id="graphic-design" class="moy-showcase-wrapper">
-            <div class="moy-showcase-header">
-                <span class="detail-num">04 // GRAPHIC DESIGN</span>
-                <h2 class="moy-showcase-title">Visual Identity, Posters & Corporate Branding</h2>
-                <p class="detail-desc">Explorations in layout hierarchy, color psychology, and corporate branding identity systems. Contains poster designs, vector logotypes, and commercial publication assets layout.</p>
-                <div class="moy-showcase-line"></div>
-            </div>
-            <div class="moy-cloud-container">
-                <div class="moy-cloud-row">
-                    <div class="moy-laptop-frame">
-                        <div class="moy-laptop-screen">
-                            <img src="images/graphic-project.png" alt="Graphic Showcase">
-                        </div>
-                        <div class="moy-laptop-base"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        // 3. BACK TO TOP BUTTON LOGIC
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 400) scrollTopBtn.classList.add("show-btn");
+            else scrollTopBtn.classList.remove("show-btn");
+        });
 
-        <!-- DETAIL 5: GAMES DEVELOPMENT -->
-        <div id="games-dev" class="moy-showcase-wrapper">
-            <div class="moy-showcase-header">
-                <span class="detail-num">05 // GAMES DEVELOPMENT</span>
-                <h2 class="moy-showcase-title">Interactive Game Mechanics & Level Design</h2>
-                <p class="detail-desc">Projects involving game logic scripts, user control mechanics, sprite sheets implementation, and level architecture blueprints designed for cross-platform entertainment systems.</p>
-                <div class="moy-showcase-line"></div>
-            </div>
-            <div class="moy-cloud-container">
-                <div class="moy-cloud-row">
-                    <div class="moy-laptop-frame">
-                        <div class="moy-laptop-screen">
-                            <img src="images/games-project.png" alt="Games Showcase">
-                        </div>
-                        <div class="moy-laptop-base"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        // 4. FAQ INTERACTIVE TOGGLE FUNCTIONS
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            item.classList.toggle('active');
+            const icon = button.querySelector('.faq-icon');
+            if(item.classList.contains('active')) {
+                icon.classList.replace('fa-plus', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-plus');
+            }
+        }
 
-        <!-- DETAIL 6: PHOTOGRAPHY & VIDEOGRAPHY -->
-        <div id="photo-video" class="moy-showcase-wrapper">
-            <div class="moy-showcase-header">
-                <span class="detail-num">06 // PHOTOGRAPHY & VIDEOGRAPHY</span>
-                <h2 class="moy-showcase-title">Digital Photography & Video Production Portfolio</h2>
-                <p class="detail-desc">A showcase of cinematic compositions, short films, lighting studies, and audio-visual post-production editing. Focuses on storytelling techniques through framing and rhythmic editing sequences.</p>
-                <div class="moy-showcase-line"></div>
-            </div>
-            <div class="moy-cloud-container">
-                <div class="moy-cloud-row">
-                    <div class="moy-laptop-frame">
-                        <div class="moy-laptop-screen">
-                            <img src="images/photo-project.png" alt="Photo Video Showcase">
-                        </div>
-                        <div class="moy-laptop-base"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 Mzn.Studio. All Rights Reserved.</p>
-        <p>FIK UNISZA // CSD34203_PROJECT</p>
-    </footer>
-
+        // 5. LIVE DIGITAL CLOCK (KUALA LUMPUR REAL TIME)
+        function updateLiveClock() {
+            const options = { timeZone: "Asia/Kuala_Lumpur", hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+            const formatter = new Intl.DateTimeFormat([], options);
+            document.getElementById('liveClock').innerHTML = formatter.format(new Date());
+        }
+        setInterval(updateLiveClock, 1000);
+        updateLiveClock();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
