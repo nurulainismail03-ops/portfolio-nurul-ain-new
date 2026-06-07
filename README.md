@@ -58,6 +58,12 @@ The primary purpose of this project is to build an interactive digital platform 
 
 ---
 
+## Demo Link
+* **🔗 Live Website Link:** [Click Here to View Live Portfolio](https://nurulainismail03-ops.github.io/portfolio-nurul-ain-new/)
+* **📂 Project Repository Link:** [Click Here to View GitHub Repository](https://github.com/nurulainismail03-ops/portfolio-nurul-ain-new)
+
+---
+
 ## How to Run the Project
 Follow these step-by-step instructions to run the project locally on your machine:
 
@@ -67,10 +73,4 @@ Ensure you have a modern web browser installed (such as Google Chrome, Mozilla F
 ### 2. Clone the Repository
 Open your terminal, command prompt, or Git Bash, and run the following command to clone the project:
 ```bash
-git clone [https://github.com/nurulainismail03-ops/portfolio-nurul-ain-new.git](https://github.com/nurulainismail03-ops/portfolio-nurul-ain-new.git)
-
----
-
-## Demo Link
-* **🔗 Live Website Link:** [Click Here to View Live Portfolio](https://nurulainismail03-ops.github.io/portfolio-nurul-ain-new/)
-* **📂 Project Repository Link:** [Click Here to View GitHub Repository](https://github.com/nurulainismail03-ops/portfolio-nurul-ain-new)
+git clone [https://github.com/nurulainismail03-ops/portfolio-nurul-ain-new.git](https://github.com/nurulainismail03-ops/portfolio-nurul-ain-new.git).
