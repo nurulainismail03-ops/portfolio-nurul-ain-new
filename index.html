@@ -6,6 +6,166 @@
     <title>Multimedia Portfolio | CSD 34203</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           UBAT PENJINAK RESPONSIF TELEFON (HANYA AKTIF PADA SKRIN KECIL)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            /* 1. Kunci skrin utama supaya tiada limpahan ke kanan */
+            html, body {
+                overflow-x: hidden !important;
+                width: 100% !important;
+                margin: 0;
+                padding: 0;
+            }
+
+            /* 2. Betulkan susunan Navbar atas */
+            .navbar {
+                flex-direction: column !important;
+                padding: 15px 10px !important;
+                gap: 12px !important;
+                position: absolute !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            .nav-links {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                gap: 15px !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+            }
+            .nav-links li a {
+                font-size: 13px !important;
+                padding: 4px 6px !important;
+            }
+            #theme-toggle {
+                position: absolute !important;
+                right: 15px !important;
+                top: 15px !important;
+            }
+
+            /* 3. Turunkan bekas kandungan supaya tidak tersorok di bawah navbar */
+            .container {
+                margin-top: 140px !important;
+                padding: 0 20px !important;
+                box-sizing: border-box !important;
+                width: 100% !important;
+            }
+
+            /* 4. Tukar susunan layout Hero dari melintang ke menegak */
+            .hero-showcase {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                gap: 30px !important;
+                height: auto !important;
+                padding-bottom: 5px !important;
+            }
+
+            /* 5. Jinakkan Teks Gergasi PORTFOLIO dan Avatar */
+            .visual-container {
+                position: relative !important;
+                width: 100% !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                margin-bottom: 10px !important;
+            }
+            .huge-bg-text {
+                font-size: 14vw !important; /* Saiz font mengecil ikut skrin fon automatik */
+                line-height: 1 !important;
+                letter-spacing: 2px !important;
+                position: relative !important;
+                transform: none !important;
+                text-align: center !important;
+                width: 100% !important;
+                margin: 0 !important;
+                opacity: 0.15 !important; /* Kurangkan sikit kepekatan biar nampak kemas */
+            }
+            .avatar-front {
+                position: absolute !important;
+                max-width: 150px !important; /* Mengecilkan avatar di fon */
+                height: auto !important;
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important; /* Kunci kedudukan betul-betul di tengah perkataan */
+            }
+
+            /* 6. Susun kandungan teks penerangan */
+            .hero-content-bottom {
+                position: relative !important;
+                left: 0 !important;
+                bottom: 0 !important;
+                width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                padding: 0 !important;
+            }
+            .hero-tag {
+                font-size: 11px !important;
+                letter-spacing: 0.5px !important;
+                display: inline-block !important;
+            }
+            .hero-desc {
+                font-size: 13.5px !important;
+                line-height: 1.6 !important;
+                margin: 15px 0 !important;
+                max-width: 100% !important;
+            }
+            .hero-cta {
+                width: 100% !important;
+                max-width: 250px !important;
+                justify-content: center !important;
+                margin-top: 10px !important;
+            }
+
+            /* 7. Tukar Ikon Sosial (Kiri) & Teks Menegak (Kanan) supaya tersusun melintang */
+            .hero-side-links.left {
+                position: relative !important;
+                display: flex !important;
+                flex-direction: row !important; /* Tukar dari menegak ke melintang */
+                justify-content: center !important;
+                gap: 25px !important;
+                width: 100% !important;
+                left: 0 !important;
+                top: 0 !important;
+                order: 2; /* Letakkan di bawah teks */
+                margin-top: 15px !important;
+            }
+            .hero-side-links.right {
+                position: relative !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                width: 100% !important;
+                right: 0 !important;
+                top: 0 !important;
+                order: 3; /* Letakkan paling bawah sekali sebelum footer */
+                margin-top: 15px !important;
+            }
+            
+            /* Paksa teks "BASED IN TERENGGANU" baring melintang */
+            .side-text {
+                writing-mode: horizontal-tb !important; 
+                transform: none !important;
+                font-size: 11px !important;
+                letter-spacing: 1px !important;
+                text-align: center !important;
+            }
+            
+            /* Sorokkan garisan design dekorasi di skrin telefon */
+            .side-line {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -23,7 +183,6 @@
     <main class="container">
         <section class="hero-showcase">
             
-            <!-- LEFT WING: Floating Social Links -->
             <div class="hero-side-links left">
                 <a href="https://github.com" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://behance.net" target="_blank" title="Behance"><i class="fab fa-behance"></i></a>
@@ -31,20 +190,17 @@
                 <div class="side-line"></div>
             </div>
 
-            <!-- OVERLAPPING VISUAL (BIG TEXT + AVATAR) -->
             <div class="visual-container">
                 <div class="huge-bg-text">PORTFOLIO</div>
                 <img src="avatar.png" alt="3D Hijab Avatar" class="avatar-front">
             </div>
 
-            <!-- HERO TEXT CONTENT -->
             <div class="hero-content-bottom">
                 <span class="hero-tag">Special Topics in Software Development</span>
                 <p class="hero-desc">A Multimedia student at the Faculty of Informatics and Computing (FIK), UniSZA. Specializing in crafting immersive digital experiences, dynamic visual assets, and high-fidelity UI/UX frameworks.</p>
                 <a href="blog.html" class="hero-cta">Explore My Blog <i class="fas fa-arrow-right"></i></a>
             </div>
 
-            <!-- RIGHT WING: Vertical Tech Stamp -->
             <div class="hero-side-links right">
                 <span class="side-text">BASED IN TERENGGANU, MY</span>
                 <div class="side-line"></div>

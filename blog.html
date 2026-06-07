@@ -342,6 +342,88 @@
         body.dark-theme .footer-socials a:hover { color: #aaaaaa !important; }
         body.dark-theme .back-to-top { background-color: #ffffff !important; color: #111111 !important; }
         body.dark-theme .back-to-top:hover { background-color: #cccccc !important; }
+    /* ==========================================================================
+           TAMPAL DI SINI: MAGIC RESPONSIF UNTUK TELEFON (BLOG/JOURNAL PAGE)
+           ========================================================================== */
+        @media (max-width: 768px) {
+            
+            /* 1. Jaga Latar Belakang & Jarak Sisi */
+            body.editorial-blog-body {
+                overflow-x: hidden !important;
+            }
+            
+            .master-journal-container {
+                padding: 0 20px !important;
+                margin-top: 130px !important; /* Elak konten tersumbat bawah navbar */
+            }
+
+            /* 2. Menu Penapis Kategori (Filter Bar) */
+            .journal-filter-bar {
+                gap: 8px !important;
+                margin-bottom: 40px !important;
+                justify-content: flex-start !important;
+            }
+
+            .journal-btn {
+                padding: 6px 16px !important;
+                font-size: 11px !important;
+                flex: 1 1 calc(50% - 10px) !important; /* Susun 2 butang sebaris dengan kemas */
+                text-align: center !important;
+            }
+
+            /* 3. Tajuk Seksyen & Tag */
+            .journal-header {
+                flex-direction: column !important; /* Tajuk atas, tag bawah */
+                align-items: flex-start !important;
+                gap: 10px !important;
+            }
+
+            .journal-title {
+                font-size: 18px !important; /* Kecilkan sikit biar tak pecah baris melompat */
+                line-height: 1.3 !important;
+            }
+
+            /* 4. Kad UI Web Slider (CatCare) */
+            .carousel-web-card {
+                flex: 0 0 280px !important; /* Kecilkan lebar kad slider supaya muat skrin fon */
+                max-width: 80vw !important;
+            }
+
+            .web-card-frame {
+                height: 180px !important; /* Rendahkan ketinggian bingkai gambar */
+            }
+
+            .web-card-footer {
+                padding: 12px 15px !important;
+                flex-direction: column !important; /* Nama projek atas, kod MZN bawah */
+                align-items: flex-start !important;
+                gap: 8px !important;
+            }
+
+            /* 5. Susunan Kawalan Slider (Dots & Button) */
+            .carousel-controls-container {
+                flex-wrap: wrap !important;
+                gap: 15px !important;
+                justify-content: center !important;
+            }
+
+            .carousel-view-all {
+                width: 100% !important;
+                text-align: center !important;
+                order: 3 !important; /* Letak butang 'View Prototype' paling bawah sekali */
+                padding-top: 10px !important;
+            }
+
+            /* 6. Baiki Grid 3D Workshop & Grafik (Bila anda sambung kod nanti) */
+            .squarespace-feature-grid {
+                grid-template-columns: 1fr !important; /* Tukar jadi 1 kolum lurus ke bawah */
+                gap: 15px !important;
+            }
+
+            .feature-premium-card {
+                padding: 20px 20px 60px 20px !important;
+            }
+        }
     </style>
 </head>
 <body class="editorial-blog-body">

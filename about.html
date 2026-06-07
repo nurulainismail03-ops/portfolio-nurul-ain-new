@@ -10,16 +10,66 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* ==========================================================================
-           🎨 GLOBAL ACCENT UPDATE (TUKAR BIRU -> ESTETIK COKLAT GELAP)
-           ========================================================================== */
         :root {
-            --accent-color: #4a3728; /* Coklat Gelap Estetik */
-            --accent-light: rgba(74, 55, 40, 0.07); /* Tint Coklat Lembut */
+            --accent-color: #4a3728; 
+            --accent-light: rgba(74, 55, 40, 0.07); 
             --text-muted: #71665d;
         }
 
-        /* Elemen Meta Masa & Tarikh Gaya Blog */
+        /* ==========================================================================
+           PEMBAIKAN RESPONSIF UNTUK NAVBAR YANG PECAH DI FON
+           ========================================================================== */
+        @media (max-width: 767px) {
+            /* 1. Jinakkan Navbar utama supaya tidak melimpah */
+            .navbar {
+                flex-direction: column !important;
+                padding: 15px 10px !important;
+                gap: 12px !important;
+                position: absolute !important; /* Elakkan bertindih statik */
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* 2. Susun Menu Links (Home, About, Blog, Contact) jadi sebaris yang kemas & kecil sedikit */
+            .nav-links {
+                display: flex !important;
+                flex-direction: row !important; /* Kekal sebaris tapi fleksibel */
+                justify-content: center !important;
+                gap: 15px !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                list-style: none !important;
+            }
+
+            .nav-links li a {
+                font-size: 13px !important; /* Kecilkan sikit saiz font di fon */
+                padding: 4px 6px !important;
+            }
+
+            /* 3. Letakkan butang tukar tema di tempat yang sesuai */
+            #theme-toggle {
+                position: absolute !important;
+                right: 15px !important;
+                top: 15px !important;
+            }
+            
+            /* Jarakkan kandungan 'main' ke bawah sedikit di fon supaya tak kena sorok dengan navbar */
+            main.container {
+                margin-top: 160px !important; 
+            }
+        }
+
+        /* ==========================================================================
+           STYLING KANDUNGAN LAIN (KEKAL ASAL)
+           ========================================================================== */
+        html, body {
+            overflow-x: hidden !important;
+            width: 100% !important;
+            margin: 0;
+            padding: 0;
+        }
+
         .blog-meta-wrapper {
             display: flex;
             align-items: center;
@@ -35,43 +85,60 @@
         }
 
         .sub-tag {
-            font-size: 11px !important;
+            font-size: 11px;
             font-weight: 700;
-            color: var(--accent-color) !important;
+            color: var(--accent-color);
             background: var(--accent-light);
-            padding: 4px 12px !important;
-            border-radius: 100px !important;
+            padding: 4px 12px;
+            border-radius: 100px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            display: inline-block;
         }
 
         .hollow-text {
-            color: var(--accent-color) !important;
+            color: var(--accent-color);
         }
 
-        /* CSS Bahagian Routine Tabs (Vibes Kad Blog Premium) */
+        .floating-portrait {
+            width: 100% !important;
+            max-width: 320px !important;
+            height: auto !important;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 767px) {
+            .bento-skills-layout {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 15px !important;
+            }
+            .bento-card {
+                width: 100% !important;
+                height: auto !important;
+            }
+            .info-item {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 5px;
+            }
+        }
+
+        /* Routine Tabs Styling */
         .routine-tabs-container {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
             background: #ffffff;
             border-radius: 20px;
-            padding: 15px;
+            padding: 20px;
             box-shadow: 0 10px 30px rgba(74, 55, 40, 0.03);
-            gap: 15px;
             border: 1px solid rgba(74, 55, 40, 0.02);
             margin-top: 20px;
-        }
-        @media (max-width: 768px) { 
-            .routine-tabs-container { grid-template-columns: 1fr; } 
         }
 
         .tab-menu { 
             display: flex; 
             flex-direction: column; 
-            gap: 6px; 
-        }
-        @media (max-width: 768px) { 
-            .tab-menu { flex-direction: row; flex-wrap: wrap; } 
+            gap: 8px; 
         }
         
         .tab-btn {
@@ -88,17 +155,18 @@
             gap: 12px;
             color: #5c524a;
             transition: all 0.2s ease;
+            width: 100%;
         }
         .tab-btn:hover { 
             background: rgba(74, 55, 40, 0.03); 
         }
         .tab-btn.active-tab {
             background: var(--accent-color) !important; 
-            color: #ffffff;
+            color: #ffffff !important;
         }
 
         .tab-contents { 
-            padding: 20px 25px; 
+            padding: 10px 15px; 
         }
         .tab-content-pane { 
             display: none; 
@@ -119,36 +187,33 @@
             margin: 0; 
         }
 
-        /* Kemas kini warna elemen sedia ada supaya selari */
-        .edu-date {
-            color: var(--accent-color) !important;
-        }
-        .edu-grade {
-            background: var(--accent-light) !important;
-            color: var(--accent-color) !important;
-        }
-        .bento-icon {
-            color: var(--accent-color) !important;
-        }
+        .edu-date { color: var(--accent-color); font-weight: 700; }
+        .edu-grade { background: var(--accent-light); color: var(--accent-color); padding: 3px 10px; border-radius: 5px; font-size: 12px; }
+        .bento-icon { color: var(--accent-color) !important; }
 
-        /* ==========================================================================
-           🌓 DARK MODE COMPATIBILITY (TEMA COKLAT UNTUK DARK MODE)
-           ========================================================================== */
         body.dark-theme {
-            --accent-color: #d7c4b7; /* Warna coklat krim lembut untuk mod gelap */
+            --accent-color: #d7c4b7; 
             --accent-light: rgba(215, 196, 183, 0.15);
             --text-muted: #a3968e;
         }
         body.dark-theme .routine-tabs-container {
-            background: #181614 !important; /* Latar belakang coklat sangat gelap */
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3) !important;
-            border-color: rgba(255,255,255,0.02) !important;
+            background: #181614; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.02);
         }
         body.dark-theme .tab-btn { color: #a3968e; }
         body.dark-theme .tab-btn:hover { background: rgba(255,255,255,0.03); }
-        body.dark-theme .tab-btn.active-tab { background: var(--accent-color) !important; color: #181614; font-weight: 700; }
+        body.dark-theme .tab-btn.active-tab { background: var(--accent-color) !important; color: #181614 !important; font-weight: 700; }
         body.dark-theme .tab-content-pane h3 { color: #ffffff; }
         body.dark-theme .tab-content-pane p { color: #ced4da; }
+
+        @media (max-width: 767px) {
+            .tab-menu { flex-direction: row; flex-wrap: wrap; }
+            .tab-btn { flex: 1 1 calc(50% - 5px); justify-content: center; font-size: 12px; padding: 10px; }
+            .tab-menu .tab-btn:nth-child(3) { flex: 1 1 100%; }
+            .edu-row-card { flex-direction: column !important; gap: 10px; }
+            .edu-badge-zone { display: flex; justify-content: space-between; width: 100%; }
+        }
     </style>
 </head>
 <body>
